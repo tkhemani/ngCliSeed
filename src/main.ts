@@ -21,9 +21,9 @@ bootstrap(AppComponent, [
   HTTP_PROVIDERS,
   FIREBASE_PROVIDERS,
   // Initialize Firebase app
-    //  defaultFirebase('https://hatplay.firebaseio.com')
+      defaultFirebase('https://hatplay.firebaseio.com')
   //    "firebase": "2.4.0",
 //     "angularfire2": "2.0.0-alpha.8"
-  defaultFirebase(config)
+ // defaultFirebase(config)
 ]);
 

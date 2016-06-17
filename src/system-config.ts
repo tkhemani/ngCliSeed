@@ -7,7 +7,7 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 const map: any = {
-   'firebase': 'vendor/firebase/firebase.js',
+   'firebase': 'vendor/firebase/lib/firebase-web.js',
   'angularfire2': 'vendor/angularfire2',
   '@angular2-material': 'vendor/@angular2-material'
 };
