@@ -6,8 +6,9 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 var map = {
-    'firebase': 'vendor/firebase/firebase.js',
-    'angularfire2': 'vendor/angularfire2'
+    'firebase': 'vendor/firebase/lib/firebase-web.js',
+    'angularfire2': 'vendor/angularfire2',
+    '@angular2-material': 'vendor/@angular2-material'
 };
 /** User packages configuration. */
 var packages = {
@@ -16,6 +17,27 @@ var packages = {
         main: 'angularfire2.js'
     }
 };
+// put the names of any of your Material components here
+var materialPkgs = [
+    'core',
+    'button',
+    'card',
+    'input',
+    'radio',
+    'checkbox',
+    'toolbar',
+    'icon',
+    'sidenav',
+    'list',
+    'grid-list',
+    'progress-bar',
+    'progress-circle',
+    'slide-toggle',
+    'tabs'
+];
+materialPkgs.forEach(function (pkg) {
+    packages[("@angular2-material/" + pkg)] = { main: pkg + ".js" };
+});
 ////////////////////////////////////////////////////////////////////////////////////////////////
 /***********************************************************************************************
  * Everything underneath this line is managed by the CLI.
