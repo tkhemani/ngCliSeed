@@ -27,7 +27,16 @@ const materialPkgs:string[] = [
   'card',
   'input',
   'radio',
-  'checkbox'
+  'checkbox',
+  'toolbar',
+  'icon',
+'sidenav',
+'list',
+'grid-list',
+'progress-bar',
+'progress-circle',
+'slide-toggle',
+'tabs'
 ];
 
 materialPkgs.forEach((pkg) => {

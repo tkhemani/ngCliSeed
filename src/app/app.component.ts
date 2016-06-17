@@ -14,7 +14,7 @@ declare var _:any;
  
 @Component({
     moduleId: module.id,
-    selector: 'hat-app',
+    selector: 'app-root',
     templateUrl: 'app.component.html',
     styleUrls: ['app.component.css'],
     directives: [MD_TABS_DIRECTIVES, MdInput, MD_BUTTON_DIRECTIVES, MD_CARD_DIRECTIVES, MdRadioGroup, MdIcon, MdToolbar,

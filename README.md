@@ -20,7 +20,7 @@ FEATURES
 --- 
 
 FIREBASE HOSTING
-* Visit http://hatplay.firebaseapp.com for live use
+* Visit http://tkhemani.github.io/ngCliSeed (old url: http://hatplay.firebaseapp.com) for live use
 
 --- 
 
