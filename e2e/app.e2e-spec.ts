@@ -1,6 +1,6 @@
 import { CliAppPage } from './app.po';
 
-describe('cli-app App', function() {
+describe('ngCliSeed App', function() {
   let page: CliAppPage;
 
   beforeEach(() => {
