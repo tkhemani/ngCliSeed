@@ -1,31 +1,61 @@
-# CliApp
+LOCAL DEV SETUP 
+* install nodeJS
+* npm install -g angular-cli
+* npm install
+* ng serve
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.6.
+--- 
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+LOCAL HOSTING
+* xcopy C:\temp\hat\dist C:\inetpub\wwwroot /s /e
+* Next Browse http://<machine name>/index.html
 
-## Code scaffolding
+--- 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/route/class`.
+FEATURES
+* Uses Firebase Real Time DB 
+* Build with Angular 2
+* Material Design goodness
 
-## Buildcli
+--- 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+FIREBASE HOSTING
+* Visit http://hatplay.firebaseapp.com for live use
 
-## Running unit tests
+--- 
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+UPCOMING GLOBAL FEATURES
+- [ ] CHROME/ANDROID NOTIFICATIONS WHEN ACTIONS ARE REQUIRED FROM PLAYER
+- [ ] start game only when both player are in the session
+- [ ] deploy to gh pages
+- [ ] puppy like md-toolbar at top
+- [ ] name dropdown
+- [ ] Minify, uglify and gzip build code
+- [ ] player count in session
+- [ ] Cloud deploy on Firebase
+- [ ] Encryption
+- [ ] offline template compiler for faster initial load
 
-## Running end-to-end tests
+--- 
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/). 
-Before running the tests make sure you are serving the app via `ng serve`.
+UPCOMING HANGMAN FEATURES
+- [ ] Show ans. if wrong
+- [ ] / for space
+- [ ] On Screen Keyboard for entering text toggleable by radio. Should have vovels highlighted and also options user enters
+- [ ] don't allow same option to be entered again 
+- [ ] Notification or Color indicator when action required like for giving movie
+- [ ] Chat
+- [ ] Refresh should not refresh Bluff and vice versa
+- [ ] don't subs 1 for wrong guess
+- [ ] give more points for less options used
+- [ ] points can be redeemed for options in case player is out of options for a game
+- [ ] Optionally Presist changes to DB for ever so as to never reset game
 
-## Deploying to Github Pages
+--- 
 
-Run `ng github-pages:deploy` to deploy to Github Pages.
+UPCOMING BLUFF FEATURES
+- [ ] game should persist across mobile and desktop...
 
-## Further helpp
+--- 
 
-To get more help on the `angular-cli` use `ng --help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md)..
+ISSUES

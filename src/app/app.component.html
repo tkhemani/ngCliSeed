@@ -1,9 +1,380 @@
-<h1>
-  {{title}}
-</h1>
+<!-- <md-input type="text" #playerName placeholder="Name..." (keyup.enter)="startGame(playerName.value)"></md-input> -->
+<md-toolbar color="primary">
+    HAT MPGs
+  <span *ngIf="gameStarted">
+<span *ngIf="!myTurn">     ( Not Your Turn )</span>
+  <span *ngIf="myTurn">     ( Your Turn )</span>
+  </span>
+    <button md-fab style="float: right;background:#C8D0BC" (click)="resetGame()">
+        <md-icon>refresh</md-icon>
+    </button>
+</md-toolbar>
+<!-- <span *ngIf="gameStarted" class="opponentStatus">Opponent's Cards Left: {{ localCopy[otherPlayerName].length }}</span> -->
 
-<ul *ngFor="let item of items | async">
-  <li class="text">
-    {{item.$value}}
-  </li>
-</ul>
+
+<md-tab-group class="demo-tab-group">
+    <md-tab>
+        <template md-tab-label>Bluff</template>
+        <template md-tab-content>
+
+
+            <md-card style="    margin-top: 10px;">
+                <md-card-content>
+                    <!--  <div style="margin: 10px;margin-left:15px"> -->
+                    Select Player:
+                    <md-radio-group>
+                        <md-radio-button (click)="playerName = 'p1'; gameStarted = false" value="p1" checked="true">T
+                        </md-radio-button>
+                        <md-radio-button (click)="playerName = 'p2'; gameStarted = false" value="p2">H</md-radio-button>
+                    </md-radio-group>
+                    <button md-raised-button (click)="startGame()" color="primary" style="margin-left: 30px;"
+                            [disabled]="!localCopy.resetState">Play
+                    </button>
+                </md-card-content>
+<md-card-subtitle *ngIf="gameStarted">Opponent's Cards Left: {{ localCopy[otherPlayerName].length }}</md-card-subtitle>
+
+            </md-card>
+
+
+            <md-card *ngIf="gameStarted && localCopy.winnerName == otherPlayerName">
+                <md-card-title>YOU LOSE :(</md-card-title>
+            </md-card>
+            <md-card *ngIf="gameStarted && localCopy.winnerName == playerName">
+                <md-card-title>YOU WIN :)</md-card-title>
+            </md-card>
+
+            <md-card style="    margin-top: 10px;" *ngIf="challengeState && myTurn && gameStarted">
+                <md-card-title>Following cards are played as {{localCopy.playAs}}:
+                </md-card-title>
+                <md-card-content>
+                    <div class="card-container  wrap">
+                        <md-card #singleCard [class.selectCard]="card.selected" (click)="cardForChallengeClicked(card)"
+                                 class="flex-item" *ngFor="let card of localCopy.turnCards">
+                            <!--     <md-card-title *ngIF="challengeComplete"  >{{card.value}}</md-card-title> -->
+                            <md-card-title>X</md-card-title>
+                            <!--     <span md-line>test</span> -->
+                        </md-card>
+                    </div>
+                </md-card-content>
+                <md-card-actions align="start">
+          <span *ngIf="localCopy.whoPassed == ''"> 
+                <button (click)="challengeYes()" md-button color="primary">CHALLENGE</button>
+         <button (click)="challengePass()" md-button color="primary">PASS</button>
+                <button (click)="challengeAddMore()" md-button color="primary">ADD MORE</button>
+                </span>
+                    <span *ngIf="localCopy.whoPassed != ''"> 
+                    <button *ngIf="localCopy.whoPassed == playerName" (click)="challengeYes()" md-button
+                            color="primary">CHALLENGE
+                    </button>
+                    <button *ngIf="localCopy.whoPassed == playerName" (click)="challengePass()" md-button
+                            color="primary">PASS
+                    </button>
+                    <button *ngIf="localCopy.whoPassed == otherPlayerName" (click)="challengeAddMore()" md-button
+                            color="primary">ADD MORE
+                    </button>
+                    <button *ngIf="localCopy.whoPassed == otherPlayerName" (click)="roundComplete()" md-button
+                            color="primary">COMPLETE ROUND
+                    </button>
+                    </span>
+                </md-card-actions>
+            </md-card>
+
+
+            <md-card style="    margin-top: 10px;" *ngIf="gameStarted">
+                <md-card-title>Your Cards...
+                </md-card-title>
+                <md-card-content>
+                    <div class="card-container  wrap">
+                    
+                        <md-card #singleCard [class.selectCard]="card.selected"
+                                 (click)="cardClicked(card)" class="flex-item"
+                                 *ngFor="let card of localCopy[playerName]">
+                            <md-card-title>{{ card.value }}</md-card-title>
+                            <!--     <span md-line>test</span> -->
+                        </md-card>
+                    </div>
+
+                
+                </md-card-content>
+                <md-card-actions>
+                <span *ngIf="localCopy.whoPassed != '' && myTurn">                     
+                    <button *ngIf="localCopy.whoPassed == otherPlayerName" (click)="roundComplete()" md-button
+                            color="primary">COMPLETE ROUND
+                    </button>
+                    </span>
+         </md-card-actions>    
+                <md-card-subtitle *ngIf="localCopy.cardCache">Cards in Current Round's Cache : {{ localCopy.cardCache.length }}</md-card-subtitle>
+            </md-card>
+
+            <md-card style="    margin-top: 10px;"
+                     *ngIf="localCopy.turnCards.length >1 && myTurn && !challengeState">
+                <md-card-title>Play Selected As...</md-card-title>
+                <md-card-content>
+                    <div class="card-container  wrap">
+                        <md-card #singleCard [class.selectCard]="card.selected" (click)="cardOptionClicked(card)"
+                                 class="flex-item" *ngFor="let card of localCopy.cardOptions">
+                            <md-card-title>{{ card.value }}</md-card-title>
+                            <!--     <span md-line>test</span> -->
+                        </md-card>
+                    </div>
+                </md-card-content>
+                <md-card-actions align="start">
+                    <button (click)="executeChance()" md-button color="primary">DONE</button>
+                </md-card-actions>
+            </md-card>
+
+
+        </template>
+    </md-tab>
+    <md-tab>
+        <template md-tab-label>
+            <span>Hangman</span></template>
+        <template md-tab-content>
+            <div class="card-container  wrap">
+                <md-card style="height: 33px;">
+                    <md-card-subtitle>Scoreboard</md-card-subtitle>
+                    <md-card-title>T: {{ localCopy.hang.score1 }}, H: {{ localCopy.hang.score2 }}</md-card-title>
+                </md-card>
+                <md-card class="hangman-item">
+                    <md-card-content>
+                        <md-icon>movie_filter</md-icon>
+                        <md-input type="text" #playerName maxLength="20" placeholder="Enter Movie for T..."
+                                  (keyup.enter)="startHangman1(playerName.value);playerName.value = '' ">
+                            <span md-suffix>({{ playerName.characterCount }} of 20)</span>
+                        </md-input>
+
+                        <div *ngIf="!localCopy.hang.isMovie1GameOver">
+                            <md-card *ngIf="localCopy.hang.movie1string.length >1">
+                                <div class="card-container  wrap">
+                                    <md-card #singleCard (click)="cardClicked(card)" class="flex-item"
+                                             *ngFor="let card of localCopy.hang.movie1">
+                                        <md-card-title
+                                                *ngIf="card.show && card.value != ' '">{{ card.value }}</md-card-title>
+                                        <md-card-title *ngIf="!card.show && card.value != ' '">_</md-card-title>
+                                        <md-card-title *ngIf="card.value == ' '">-</md-card-title>
+
+                                        <!--     <span md-line>test</span> -->
+                                    </md-card>
+                                </div>
+                            </md-card>
+                            <md-card *ngIf="localCopy.hang.movie1string.length >1" style="margin-top: 10px;">
+                                <div class="card-container  wrap">
+                                    <md-card #singleCard [class.selectCard]="card.selected" (click)="cardClicked(card)"
+                                             class="hangmanOptions-item"
+                                             *ngFor="let card of localCopy.hang.movie1state; let i = index">
+                                        <md-card-title>
+                                            <md-input type="text" [placeholder]="card.placeHolder"
+                                                      [(ngModel)]="localCopy.hang.movie1state[i].valueEntered"
+                                                      [disabled]="card.optionUsed"
+                                                      (keyup)="option1Clicked(card)"></md-input>
+                                        </md-card-title>
+                                        <!--     <span md-line>test</span> -->
+                                    </md-card>
+                                </div>
+                            </md-card>
+                            <md-card *ngIf="localCopy.hang.isMovie1GameOver">
+                                <md-card-title> Answer: {{ localCopy.hang.movie1string }}</md-card-title>
+                            </md-card>
+                        </div>
+
+                    </md-card-content>
+                </md-card>
+
+                <!--2nd player hangman-->
+
+                <md-card class="hangman-item">
+                    <md-card-content>
+                        <md-icon>movie_filter</md-icon>
+                        <md-input type="text" #playerName1 maxLength="20" placeholder="Enter Movie for H..."
+                                  (keyup.enter)="startHangman2(playerName1.value);playerName1.value = '' ">
+                            <span md-suffix>({{ playerName1.characterCount }} of 20)</span>
+                        </md-input>
+
+                        <div *ngIf="!localCopy.hang.isMovie2GameOver">
+                            <md-card *ngIf="localCopy.hang.movie2string.length >1">
+                                <div class="card-container  wrap">
+                                    <md-card #singleCard [class.selectCard]="card.selected" (click)="cardClicked(card)"
+                                             class="flex-item"
+                                             *ngFor="let card of localCopy.hang.movie2">
+                                        <md-card-title
+                                                *ngIf="card.show && card.value != ' '">{{ card.value }}</md-card-title>
+                                        <md-card-title *ngIf="!card.show && card.value != ' '">_</md-card-title>
+                                        <md-card-title *ngIf="card.value == ' '">-</md-card-title>
+
+                                        <!--     <span md-line>test</span> -->
+                                    </md-card>
+                                </div>
+                            </md-card>
+                            <md-card *ngIf="localCopy.hang.movie2string.length >1" style="margin-top: 10px;">
+                                <div class="card-container  wrap">
+                                    <md-card #singleCard [class.selectCard]="card.selected" (click)="cardClicked(card)"
+                                             class="hangmanOptions-item"
+                                             *ngFor="let card of localCopy.hang.movie2state; let i = index">
+                                        <md-card-title>
+                                            <md-input type="text" [placeholder]="card.placeHolder"
+                                                      [(ngModel)]="localCopy.hang.movie2state[i].valueEntered"
+                                                      [disabled]="card.optionUsed"
+                                                      (keyup)="option2Clicked(card)"></md-input>
+                                        </md-card-title>
+                                        <!--     <span md-line>test</span> -->
+                                    </md-card>
+                                </div>
+                            </md-card>
+                            <md-card *ngIf="localCopy.hang.isMovie2GameOver">
+                                <md-card-title> Answer: {{ localCopy.hang.movie1string }}</md-card-title>
+                            </md-card>
+                        </div>
+
+                    </md-card-content>
+                </md-card>
+
+
+            </div>
+        </template>
+    </md-tab>
+</md-tab-group>
+
+
+<style>
+       .flex-container {
+        padding: 10px;
+        margin: 10px;
+        list-style: none;
+        -ms-box-orient: horizontal;
+        display: flex;
+    }
+
+    .wrap {
+        flex-wrap: wrap;
+    }
+
+    .flex-item {
+        background: #F9F4F3;
+        padding: 5px;
+        margin: 5px;
+        width: 25px;
+        height: 25px;
+        text-align: center;
+        /*
+          width: 100px;
+          height: 100px;
+
+
+          line-height: 100px;
+          color: white;
+          font-weight: bold;
+          font-size: 2em;
+          text-align: center; */
+    }
+
+    .hangmanOptions-item {
+        background: #F9F4F3;
+        padding: 5px;
+        margin: 5px;
+        width: 22px;
+        height: 45px;
+        text-align: center;
+        /*
+          width: 100px;
+          height: 100px;
+
+
+          line-height: 100px;
+          color: white;
+          font-weight: bold;
+          font-size: 2em;
+          text-align: center; */
+    }
+
+    .hangman-item {
+        padding: 15px;
+        margin: 15px;
+        width: 100%;
+        height: 50%;
+        text-align: center;
+        align: center;
+        /*
+          width: 100px;
+          height: 100px;
+
+
+          line-height: 100px;
+          color: white;
+          font-weight: bold;
+          font-size: 2em;
+          text-align: center; */
+    }
+
+    .selectCard {
+        background: #C8D0BC;
+    }
+
+    [md-fab] {
+        position: absolute;
+        right: 3%;
+        top: 34px;
+        z-index: 1;
+        margin-top: 10px
+    }
+
+    .opponentStatus {
+        color: white;
+        position: absolute;
+        right: 3%;
+        top: 14px;
+        z-index: 1;
+        margin-top: 10px
+    }
+
+    md-radio-button,
+    md-checkbox {
+        margin: 16px 8px;
+    }
+
+    .form {
+        display: flex;
+    }
+
+    .form md-card {
+        flex-grow: 1;
+    }
+
+    .card-container {
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+    * {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .secondary {
+        color: rgba(0, 0, 0, 0.54);
+    }
+
+    .demo-tab-group {
+        border: 1px solid #e0e0e0;
+
+    .md-tab-header {
+        background: #f9f9f9;
+    }
+
+    .md-tab-body {
+        padding: 12px;
+    }
+
+    }
+
+    [hang-fab] {
+        position: absolute;
+        right: 3%;
+        top: 94px;
+        z-index: 1;
+        margin-top: 10px
+    }
+
+    .disableInput {
+        user-select: none;
+    }
+</style>
