@@ -7,6 +7,8 @@ import {MdRadioButton, MdRadioGroup, MdRadioDispatcher} from '@angular2-material
 import {MdIcon, MdIconRegistry} from '@angular2-material/icon';
 import {MdToolbar} from '@angular2-material/toolbar';
 import {MD_TABS_DIRECTIVES} from '@angular2-material/tabs/tabs';
+//import { PushNotificationComponent } from 'ng2-notifications';
+import {PushNotificationComponent} from './ng2-notifications';
 
 //import * as _ from 'lodash';
 
@@ -17,7 +19,7 @@ declare var _:any;
     selector: 'app-root',
     templateUrl: 'app.component.html',
     styleUrls: ['app.component.css'],
-    directives: [MD_TABS_DIRECTIVES, MdInput, MD_BUTTON_DIRECTIVES, MD_CARD_DIRECTIVES, MdRadioGroup, MdIcon, MdToolbar,
+    directives: [PushNotificationComponent, MD_TABS_DIRECTIVES, MdInput, MD_BUTTON_DIRECTIVES, MD_CARD_DIRECTIVES, MdRadioGroup, MdIcon, MdToolbar,
         MdRadioButton],
     providers: [MdRadioDispatcher, MdIconRegistry]
 })
@@ -32,6 +34,15 @@ export class AppComponent {
         optionUsed: false
     };
 
+public notification: any = {
+    show: false,
+    title: 'New Angular 2 Library!',
+    body: 'ng2-notifications',
+    icon: 'https://goo.gl/3eqeiE',
+    action: function () {
+      window.open('https://github.com/alexcastillo/ng2-notifications');
+    }
+  };
 
     challengeAddMoreState = false;
     //heroes = ['Windstorm', 'Bombasto', 'Magneta', 'Tornado'];

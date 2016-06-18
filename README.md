@@ -19,7 +19,8 @@ FEATURES
 
 --- 
 
-FIREBASE HOSTING
+HOSTING
+* Deploy to gh-pages using this command: ng github-pages:deploy --message "Optional commit message"
 * Visit http://tkhemani.github.io/ngCliSeed (old url: http://hatplay.firebaseapp.com) for live use
 
 --- 
@@ -27,7 +28,7 @@ FIREBASE HOSTING
 UPCOMING GLOBAL FEATURES
 - [ ] CHROME/ANDROID NOTIFICATIONS WHEN ACTIONS ARE REQUIRED FROM PLAYER
 - [ ] start game only when both player are in the session
-- [ ] deploy to gh pages
+- [-] deploy to gh pages
 - [ ] puppy like md-toolbar at top
 - [ ] name dropdown
 - [ ] Minify, uglify and gzip build code

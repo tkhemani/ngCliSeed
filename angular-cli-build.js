@@ -3,6 +3,7 @@
 // Also see https://github.com/angular/angular-cli/wiki/3rd-party-libs
 
 /* global require, module */
+      // 'ng2-notifications/**/*'
 
 var Angular2App = require('angular-cli/lib/broccoli/angular2-app');
 
@@ -18,7 +19,7 @@ module.exports = function(defaults) {
       '@angular/**/*.+(js|js.map)',
       'angularfire2/**/*.js',
       'firebase//lib/*.js',
-      '@angular2-material/**/*'  
+      '@angular2-material/**/*'
     ]
   });
 };

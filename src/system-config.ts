@@ -6,10 +6,16 @@
  * User Configuration.
  **********************************************************************************************/
 /** Map relative paths to URLs. */
+  // 'ng2-notifications': 'vendor/ng2-notifications/'
+  // 'ng2-notifications': {
+  //   defaultExtension: 'js',
+  //   main: 'ng2-notifications.js'
+  // }
+  
 const map: any = {
    'firebase': 'vendor/firebase/lib/firebase-web.js',
   'angularfire2': 'vendor/angularfire2',
-  '@angular2-material': 'vendor/@angular2-material'
+  '@angular2-material': 'vendor/@angular2-material',
 };
 
 /** User packages configuration. */
@@ -17,7 +23,8 @@ const packages: any = {
   angularfire2: {
     defaultExtension: 'js',
     main: 'angularfire2.js'
-  }
+  },
+   
 };
 
 // put the names of any of your Material components here
