@@ -1,6 +1,6 @@
 <!-- <md-input type="text" #playerName placeholder="Name..." (keyup.enter)="startGame(playerName.value)"></md-input> -->
-hell
-<main class="container">
+
+<!-- <main class="container">
 
       <push-notification #myNotification
         [title]="notification.title"
@@ -47,7 +47,7 @@ hell
       </article>
 
     </main>
-
+ -->
 
 <md-toolbar color="primary">
     HAT MPGs
@@ -192,7 +192,9 @@ hell
                                   (keyup.enter)="startHangman1(playerName.value);playerName.value = '' ">
                             <span md-suffix>({{ playerName.characterCount }} of 20)</span>
                         </md-input>
-
+<md-card *ngIf="localCopy.hang.isMovie1GameOver">
+                                <md-card-title> Answer: {{ localCopy.hang.movie1string }}</md-card-title>
+                            </md-card>
                         <div *ngIf="!localCopy.hang.isMovie1GameOver">
                             <md-card *ngIf="localCopy.hang.movie1string.length >1">
                                 <div class="card-container  wrap">
@@ -239,7 +241,9 @@ hell
                                   (keyup.enter)="startHangman2(playerName1.value);playerName1.value = '' ">
                             <span md-suffix>({{ playerName1.characterCount }} of 20)</span>
                         </md-input>
-
+<md-card *ngIf="localCopy.hang.isMovie2GameOver">
+                                <md-card-title> Answer: {{ localCopy.hang.movie2string }}</md-card-title>
+                            </md-card>
                         <div *ngIf="!localCopy.hang.isMovie2GameOver">
                             <md-card *ngIf="localCopy.hang.movie2string.length >1">
                                 <div class="card-container  wrap">

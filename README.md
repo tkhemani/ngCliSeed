@@ -20,6 +20,8 @@ FEATURES
 --- 
 
 HOSTING
+* make sure there are no uncommited changes
+* delete the dist directory 
 * Deploy to gh-pages using this command: ng github-pages:deploy --message "Deploying to github pages"
 * Visit http://tkhemani.github.io/ngCliSeed (old url: http://hatplay.firebaseapp.com) for live use
 
