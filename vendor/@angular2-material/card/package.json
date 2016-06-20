@@ -1,8 +1,15 @@
 {
   "_args": [
     [
-      "@angular2-material/card@2.0.0-alpha.5-2",
-      "c:\\code\\ngCliSeed"
+      {
+        "name": "@angular2-material/card",
+        "raw": "@angular2-material/card@2.0.0-alpha.5-2",
+        "rawSpec": "2.0.0-alpha.5-2",
+        "scope": "@angular2-material",
+        "spec": "2.0.0-alpha.5-2",
+        "type": "version"
+      },
+      "C:\\Users\\khematar\\MYVERSE\\Code\\ngCliSeed"
     ]
   ],
   "_from": "@angular2-material/card@2.0.0-alpha.5-2",
@@ -36,7 +43,7 @@
   "_shasum": "780c25be75312a844e7b33333e9ce3a48464a296",
   "_shrinkwrap": null,
   "_spec": "@angular2-material/card@2.0.0-alpha.5-2",
-  "_where": "c:\\code\\ngCliSeed",
+  "_where": "C:\\Users\\khematar\\MYVERSE\\Code\\ngCliSeed",
   "bugs": {
     "url": "https://github.com/angular/material2/issues"
   },
