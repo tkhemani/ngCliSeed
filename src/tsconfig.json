@@ -15,14 +15,8 @@
     "target": "es5",
     "inlineSources": true
   },
-"exclude": [
-        "node_modules",
-        "typings/browser.d.ts",
-        "typings/browser/**"
-    ],
   "files": [
     "main.ts",
-    "app.component.ts",
-    "ng2-notifications.ts"
+    "typings.d.ts"
   ]
 }

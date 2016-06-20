@@ -7,7 +7,6 @@ import {MdRadioButton, MdRadioGroup, MdRadioDispatcher} from '@angular2-material
 import {MdIcon, MdIconRegistry} from '@angular2-material/icon';
 import {MdToolbar} from '@angular2-material/toolbar';
 import {MD_TABS_DIRECTIVES} from '@angular2-material/tabs/tabs';
-//import { PushNotificationComponent } from 'ng2-notifications';
 import {PushNotificationComponent} from './ng2-notifications';
 
 //import * as _ from 'lodash';
