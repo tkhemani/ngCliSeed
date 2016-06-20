@@ -1,7 +1,7 @@
 <!-- <md-input type="text" #playerName placeholder="Name..." (keyup.enter)="startGame(playerName.value)"></md-input> -->
 hell
 <main class="container">
-      
+
       <push-notification #myNotification
         [title]="notification.title"
         [body]="notification.body"
@@ -9,11 +9,11 @@ hell
         [closeDelay]="notification.closeDelay"
         (action)="notification.action($event)">
       </push-notification>
-      
+
       <article class="row">
         <header class="col s12">
           <h5>
-            <i class="left material-icons">add_alert</i> 
+            <i class="left material-icons">add_alert</i>
             <span>ng2-notifications</span>
           </h5>
         </header>
@@ -45,12 +45,12 @@ hell
           </div>
         </form>
       </article>
-      
+
     </main>
 
 
 <md-toolbar color="primary">
-   HELLISH
+    HAT MPGs
   <span *ngIf="gameStarted">
 <span *ngIf="!myTurn">     ( Not Your Turn )</span>
   <span *ngIf="myTurn">     ( Your Turn )</span>
@@ -285,21 +285,7 @@ hell
 </md-tab-group>
 
 
-
 <style>
-
-    body {
-  margin-top: 30px;
-}
-
-form {
-  margin-top: 20px;
-}
-
-body {
-  background: rgba(0,0,0,0.02);
-}
-
        .flex-container {
         padding: 10px;
         margin: 10px;
@@ -442,4 +428,3 @@ body {
         user-select: none;
     }
 </style>
-
