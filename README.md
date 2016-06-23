@@ -25,6 +25,7 @@ HOSTING
 * make sure there are no uncommited changes
 * delete the dist directory 
 * Deploy to gh-pages using this command: ng github-pages:deploy --message "Deploying to github pages"
+* You may cache your github credentials using this to prevent from prompt every time you push/deploy code: https://discventionstech.wordpress.com/2016/06/17/cache-github-credentials-in-git/
 * Visit http://tkhemani.github.io/ngCliSeed (old url: http://hatplay.firebaseapp.com) for live use
 
 --- 
