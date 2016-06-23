@@ -1,4 +1,5 @@
 LOCAL DEV SETUP 
+* change to dev database in code: this.root = af.database.object('/root/dev');
 * install nodeJS
 * npm install -g angular-cli
 * npm install
@@ -20,6 +21,7 @@ FEATURES
 --- 
 
 HOSTING
+* change dev database to prod: this.root = af.database.object('/root');
 * make sure there are no uncommited changes
 * delete the dist directory 
 * Deploy to gh-pages using this command: ng github-pages:deploy --message "Deploying to github pages"
@@ -33,24 +35,24 @@ UPCOMING GLOBAL FEATURES
 - [-] deploy to gh pages
 - [ ] puppy like md-toolbar at top
 - [ ] name dropdown
-- [ ] Minify, uglify and gzip build code
+- [-] Minify, uglify and gzip build code (using ng cli)
 - [ ] player count in session
-- [ ] Cloud deploy on Firebase
+- [-] Cloud deploy on Firebase
 - [ ] Encryption
 - [ ] offline template compiler for faster initial load
 
 --- 
 
 UPCOMING HANGMAN FEATURES
-- [ ] Show ans. if wrong
-- [ ] / for space
-- [ ] On Screen Keyboard for entering text toggleable by radio. Should have vovels highlighted and also options user enters
+- [-] Show ans. if wrong
+- [-] * for space
+- [-] On Screen Keyboard for entering text toggleable by radio. Should have vovels highlighted and also options user enters
 - [ ] don't allow same option to be entered again 
-- [ ] Notification or Color indicator when action required like for giving movie
+- [-] Notification or Color indicator when action required like for giving movie
 - [ ] Chat
 - [ ] Refresh should not refresh Bluff and vice versa
-- [ ] don't subs 1 for wrong guess
-- [ ] give more points for less options used
+- [-] don't subs 1 for wrong guess
+- [-] give more points for less options used
 - [ ] points can be redeemed for options in case player is out of options for a game
 - [ ] Optionally Presist changes to DB for ever so as to never reset game
 

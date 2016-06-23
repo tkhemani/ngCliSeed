@@ -84,13 +84,17 @@
 <md-card-subtitle *ngIf="gameStarted">Opponent's Cards Left: {{ localCopy[otherPlayerName].length }}</md-card-subtitle>
 
             </md-card>
-
+ 
 
             <md-card *ngIf="gameStarted && localCopy.winnerName == otherPlayerName">
-                <md-card-title>YOU LOSE :(</md-card-title>
+                <md-card-title style="
+    color: #ff0000;
+">YOU LOSE :(</md-card-title>
             </md-card>
             <md-card *ngIf="gameStarted && localCopy.winnerName == playerName">
-                <md-card-title>YOU WIN :)</md-card-title>
+                <md-card-title style="
+    color: #008000;
+">YOU WIN :)</md-card-title>
             </md-card>
 
             <md-card style="    margin-top: 10px;" *ngIf="challengeState && myTurn && gameStarted">
@@ -181,20 +185,34 @@
             <span>Hangman</span></template>
         <template md-tab-content>
             <div class="card-container  wrap">
-                <md-card style="height: 33px;">
-                    <md-card-subtitle>Scoreboard</md-card-subtitle>
+                <md-card style="height: 33px;background: aliceblue;">
+                    <md-card-subtitle style="
+    font-weight: 600;
+    align-items: center;
+">Scoreboard</md-card-subtitle>
                     <md-card-title>T: {{ localCopy.hang.score1 }}, H: {{ localCopy.hang.score2 }}</md-card-title>
                 </md-card>
-                <md-card class="hangman-item">
+                <md-card class="hangman-item" [class.gameOverIndicator]="localCopy.hang.isMovie1GameOver">
                     <md-card-content>
                         <md-icon>movie_filter</md-icon>
                         <md-input type="text" #playerName maxLength="20" placeholder="Enter Movie for T..."
                                   (keyup.enter)="startHangman1(playerName.value);playerName.value = '' ">
                             <span md-suffix>({{ playerName.characterCount }} of 20)</span>
                         </md-input>
-<md-card *ngIf="localCopy.hang.isMovie1GameOver">
+                        <md-card *ngIf="localCopy.hang.isMovie1GameOver">
                                 <md-card-title> Answer: {{ localCopy.hang.movie1string }}</md-card-title>
                             </md-card>
+                        <md-card *ngIf="!localCopy.hang.isMovie1success && localCopy.hang.isMovie1GameOver">
+                <md-card-title style="
+    color: #ff0000;
+">YOU LOSE :(</md-card-title>
+            </md-card>
+            <md-card *ngIf="localCopy.hang.isMovie1success && localCopy.hang.isMovie1GameOver">
+                <md-card-title style="
+    color: #008000;
+">YOU WIN :)</md-card-title>
+            </md-card>
+
                         <div *ngIf="!localCopy.hang.isMovie1GameOver">
                             <md-card *ngIf="localCopy.hang.movie1string.length >1">
                                 <div class="card-container  wrap">
@@ -203,7 +221,7 @@
                                         <md-card-title
                                                 *ngIf="card.show && card.value != ' '">{{ card.value }}</md-card-title>
                                         <md-card-title *ngIf="!card.show && card.value != ' '">_</md-card-title>
-                                        <md-card-title *ngIf="card.value == ' '">-</md-card-title>
+                                        <md-card-title *ngIf="card.value == ' '">*</md-card-title>
 
                                         <!--     <span md-line>test</span> -->
                                     </md-card>
@@ -224,6 +242,20 @@
                                     </md-card>
                                 </div>
                             </md-card>
+
+                            <md-card *ngIf="localCopy.hang.movie1string.length >1" style="margin-top: 10px;width: 400px">
+                                <div class="card-container  wrap">
+                                    <md-card #singleCard [class.selectCard]="!card.clickable" (click)="alphabet1Clicked(card)"
+                                             class="alphabetOptions-item"
+                                             *ngFor="let card of alphabet1">
+                                        <md-card-title>
+                                            {{card.value}}
+                                        </md-card-title>
+                                        <!--     <span md-line>test</span> -->
+                                    </md-card>
+                                </div>
+                            </md-card>
+
                             <md-card *ngIf="localCopy.hang.isMovie1GameOver">
                                 <md-card-title> Answer: {{ localCopy.hang.movie1string }}</md-card-title>
                             </md-card>
@@ -234,7 +266,7 @@
 
                 <!--2nd player hangman-->
 
-                <md-card class="hangman-item">
+                <md-card class="hangman-item" [class.gameOverIndicator]="localCopy.hang.isMovie2GameOver">
                     <md-card-content>
                         <md-icon>movie_filter</md-icon>
                         <md-input type="text" #playerName1 maxLength="20" placeholder="Enter Movie for H..."
@@ -242,8 +274,18 @@
                             <span md-suffix>({{ playerName1.characterCount }} of 20)</span>
                         </md-input>
 <md-card *ngIf="localCopy.hang.isMovie2GameOver">
-                                <md-card-title> Answer: {{ localCopy.hang.movie2string }}</md-card-title>
+                                <md-card-title> Answer: {{ localCopy.hang.isMovie2success }}</md-card-title>
                             </md-card>
+                            <md-card *ngIf="!localCopy.hang.isMovie2success && localCopy.hang.isMovie2GameOver">
+                <md-card-title style="
+    color: #ff0000;
+">YOU LOSE :(</md-card-title>
+            </md-card>
+            <md-card *ngIf="localCopy.hang.isMovie2success && localCopy.hang.isMovie2GameOver">
+                <md-card-title style="
+    color: #008000;
+">YOU WIN :)</md-card-title>
+            </md-card>
                         <div *ngIf="!localCopy.hang.isMovie2GameOver">
                             <md-card *ngIf="localCopy.hang.movie2string.length >1">
                                 <div class="card-container  wrap">
@@ -253,7 +295,7 @@
                                         <md-card-title
                                                 *ngIf="card.show && card.value != ' '">{{ card.value }}</md-card-title>
                                         <md-card-title *ngIf="!card.show && card.value != ' '">_</md-card-title>
-                                        <md-card-title *ngIf="card.value == ' '">-</md-card-title>
+                                        <md-card-title *ngIf="card.value == ' '">*</md-card-title>
 
                                         <!--     <span md-line>test</span> -->
                                     </md-card>
@@ -274,9 +316,19 @@
                                     </md-card>
                                 </div>
                             </md-card>
-                            <md-card *ngIf="localCopy.hang.isMovie2GameOver">
-                                <md-card-title> Answer: {{ localCopy.hang.movie1string }}</md-card-title>
-                            </md-card>
+
+                            <md-card *ngIf="localCopy.hang.movie2string.length >1" style="margin-top: 10px;width: 400px">
+                                <div class="card-container  wrap">
+                                    <md-card #singleCard [class.selectCard]="!card.clickable" (click)="alphabet2Clicked(card)"
+                                             class="alphabetOptions-item"
+                                             *ngFor="let card of alphabet2">
+                                        <md-card-title>
+                                            {{card.value}}
+                                        </md-card-title>
+                                        <!--     <span md-line>test</span> -->
+                                    </md-card>
+                                </div>
+                            </md-card>                            
                         </div>
 
                     </md-card-content>
@@ -327,6 +379,25 @@
         margin: 5px;
         width: 22px;
         height: 45px;
+        text-align: center;
+        /*
+          width: 100px;
+          height: 100px;
+
+
+          line-height: 100px;
+          color: white;
+          font-weight: bold;
+          font-size: 2em;
+          text-align: center; */
+    }
+
+        .alphabetOptions-item {
+        background: #F9F4F3;
+        padding: 5px;
+        margin: 5px;
+        width: 22px;
+        height: 25px;
         text-align: center;
         /*
           width: 100px;
@@ -430,5 +501,8 @@
 
     .disableInput {
         user-select: none;
+    }
+    .gameOverIndicator {
+        background: #0feabc61; 
     }
 </style>

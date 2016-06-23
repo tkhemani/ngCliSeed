@@ -33,6 +33,63 @@ export class AppComponent {
         optionUsed: false
     };
 
+alphabet1 = [
+    {value: 'A', clickable: false },
+    {value: 'B', clickable: true },
+    {value: 'C', clickable: true },
+    {value: 'D', clickable: true },
+    {value: 'E', clickable: false },
+    {value: 'F', clickable: true },
+    {value: 'G', clickable: true },
+    {value: 'H', clickable: true },
+    {value: 'I', clickable: false },
+    {value: 'J', clickable: true },
+    {value: 'K', clickable: true },
+    {value: 'L', clickable: true },
+    {value: 'M', clickable: true },
+    {value: 'N', clickable: true },
+    {value: 'O', clickable: false },
+    {value: 'P', clickable: true },
+    {value: 'Q', clickable: true },
+    {value: 'R', clickable: true },
+    {value: 'S', clickable: true },
+    {value: 'T', clickable: true },
+    {value: 'U', clickable: false },
+    {value: 'V', clickable: true },
+    {value: 'W', clickable: true },
+    {value: 'X', clickable: true },
+    {value: 'Y', clickable: true },
+    {value: 'Z', clickable: true }
+];  
+
+alphabet2 = [
+    {value: 'A', clickable: false },
+    {value: 'B', clickable: true },
+    {value: 'C', clickable: true },
+    {value: 'D', clickable: true },
+    {value: 'E', clickable: false },
+    {value: 'F', clickable: true },
+    {value: 'G', clickable: true },
+    {value: 'H', clickable: true },
+    {value: 'I', clickable: false },
+    {value: 'J', clickable: true },
+    {value: 'K', clickable: true },
+    {value: 'L', clickable: true },
+    {value: 'M', clickable: true },
+    {value: 'N', clickable: true },
+    {value: 'O', clickable: false },
+    {value: 'P', clickable: true },
+    {value: 'Q', clickable: true },
+    {value: 'R', clickable: true },
+    {value: 'S', clickable: true },
+    {value: 'T', clickable: true },
+    {value: 'U', clickable: false },
+    {value: 'V', clickable: true },
+    {value: 'W', clickable: true },
+    {value: 'X', clickable: true },
+    {value: 'Y', clickable: true },
+    {value: 'Z', clickable: true }
+];
 public notification: any = {
     show: false,
     title: 'New Angular 2 Library!',
@@ -117,6 +174,8 @@ el = null;
 //this.element.nativeElement // <- your direct element reference 
 
         this.root = af.database.object('/root');
+        //this.root = af.database.object('/root/dev'); // for local development and testing
+        
 var that = this;
         this.root.subscribe(function(data) {
             if(data.p1 && data.p1.length > 1) data.p1 = data.p1.map(n => n.value).sort().map(function(n) {return {value:n, selected: false}});
@@ -446,6 +505,20 @@ this.challengeAddMoreState = true;
         }
     }
 
+    alphabet1Clicked (card) {
+        if(card.clickable) {
+            this.option1Clicked(card);
+        card.clickable = false;
+        }
+    }
+
+    alphabet2Clicked (card) {
+        if(card.clickable) {
+            this.option2Clicked(card);
+        card.clickable = false;
+        }
+    }
+
     save(newName:string) {
         this.item.set({name: newName});
     }
@@ -480,6 +553,24 @@ this.challengeAddMoreState = true;
             this.localCopy.hang.isMovie1success = true;
             this.localCopy.hang.score1 += 1
             this.localCopy.hang.isMovie1GameOver = true;
+
+            var optionsUsedC = 0;
+            var that = this;
+            this.localCopy.hang.movie1state.forEach(function (n:any) {
+
+                if (n.optionUsed == false) {
+                    //that.localCopy.hang.isMovie2success = false;
+                } else {
+                    optionsUsedC += 1
+                }
+            })
+
+            //check game over
+            if (optionsUsedC < 3) {
+                this.localCopy.hang.score1 += 1
+                //this.localCopy.hang.score2 -= 1
+            }
+
         }
 
         if (!this.localCopy.hang.isMovie1success) {
@@ -498,7 +589,7 @@ this.challengeAddMoreState = true;
             //check game over
             if (optionsUsedCount == 7) {
                 this.localCopy.hang.isMovie1GameOver = true;
-                this.localCopy.hang.score1 -= 1
+                //this.localCopy.hang.score1 -= 1
             }
         }
         this.syncDB();
@@ -506,32 +597,77 @@ this.challengeAddMoreState = true;
 
     option1Clicked(card) {
         console.log(card);
-        var n = card.valueEntered.toUpperCase();
-        if (n == "A" || n == "E" || n == "I" || n == "O" || n == "U") {
-            card.valueEntered = "";
-            card.optionUsed = false;
-        } else if (this.localCopy.hang.movie1string.indexOf(n) != -1) {
+        if(card.valueEntered){ // if user has NOT used the keyboard
+        this.alphabet1.forEach(function(n){if(n.value.toLowerCase() == card.valueEntered.toLowerCase()) n.clickable = false})      
+
+        for(var i=0; i< this.localCopy.hang.movie1state.length; i++) {
+            var n: any = this.localCopy.hang.movie1state[i];
+if(!n.optionUsed){
+var val = n.valueEntered.toUpperCase();
+        if (val == "A" || val == "E" || val == "I" || val == "O" || val == "U") {
+            n.valueEntered = "";
+            n.optionUsed = false;
+        } else if (this.localCopy.hang.movie1string.indexOf(val) != -1) {
             //show the letter in movie
             this.localCopy.hang.movie1.forEach(function (m:any) {
-                if (m.value == n) {
+                if (m.value == val) {
                     m.show = true;
                 }
             })
 
-            card.valueEntered = "";
-            card.optionUsed = false;
+            n.valueEntered = "";
+            n.optionUsed = false;
         } else {
-            card.valueEntered = n;
-            card.optionUsed = true;
+            n.valueEntered = val;
+            n.optionUsed = true;
         }
+break;
+}
+
+}    
+        } else {
+var v = card.value;
+        if (v == "A" || v == "E" || v == "I" || v == "O" || v == "U") {
+            //do nothing as vovels aren't clickable anyways
+        } else if (this.localCopy.hang.movie1string.indexOf(v) != -1) {
+            //show the letter in movie
+            this.localCopy.hang.movie1.forEach(function (m:any) {
+                if (m.value == v) {
+                    m.show = true;
+                }
+            })            
+        } else {  // use one of the options and show the value
+            card.clickable = false;
+            var optionMarked = false;
+            this.localCopy.hang.movie1state.forEach(function(k:any){
+                if(!optionMarked) {
+                    if(!k.optionUsed){
+                        k.optionUsed = true;
+k.valueEntered = card.value;
+optionMarked = true;
+                    }
+                }
+            })            
+        }
+        } 
+        
 
         this.checkHangGameOver("movie1");
     }
 
+resetKeyboard() {
+    this.alphabet1.forEach(function(v){
+if (v.value == "A" || v.value == "E" || v.value == "I" || v.value == "O" || v.value == "U") {
+            v.clickable = false;
+        } else {
+            v.clickable = true;
+        }
+    })
+}
     startHangman1(value) {
         this.localCopy.hang.isMovie1success = false;
         this.localCopy.hang.isMovie1GameOver = false;
-
+this.resetKeyboard();
         this.localCopy.hang.movie1string = value.toUpperCase();
         var movie1 = [];
         //var that = this;
@@ -575,6 +711,23 @@ this.challengeAddMoreState = true;
             this.localCopy.hang.isMovie2success = true;
             this.localCopy.hang.score2 += 1
             this.localCopy.hang.isMovie2GameOver = true;
+
+            var optionsUsedC = 0;
+            var that = this;
+            this.localCopy.hang.movie2state.forEach(function (n:any) {
+
+                if (n.optionUsed == false) {
+                    //that.localCopy.hang.isMovie2success = false;
+                } else {
+                    optionsUsedC += 1
+                }
+            })
+
+            //check game over
+            if (optionsUsedC < 3) {
+                this.localCopy.hang.score2 += 1
+                //this.localCopy.hang.score2 -= 1
+            }
         }
 
         if (!this.localCopy.hang.isMovie2success) {
@@ -593,7 +746,7 @@ this.challengeAddMoreState = true;
             //check game over
             if (optionsUsedCount == 7) {
                 this.localCopy.hang.isMovie2GameOver = true;
-                this.localCopy.hang.score2 -= 1
+                //this.localCopy.hang.score2 -= 1
             }
         }
         this.syncDB();
@@ -601,32 +754,76 @@ this.challengeAddMoreState = true;
 
     option2Clicked(card) {
         console.log(card);
-        var n = card.valueEntered.toUpperCase();
-        if (n == "A" || n == "E" || n == "I" || n == "O" || n == "U") {
-            card.valueEntered = "";
-            card.optionUsed = false;
-        } else if (this.localCopy.hang.movie2string.indexOf(n) != -1) {
+        if(card.valueEntered){ // if user has NOT used the keyboard
+        this.alphabet2.forEach(function(n){if(n.value.toLowerCase() == card.valueEntered.toLowerCase()) n.clickable = false})      
+
+        for(var i=0; i< this.localCopy.hang.movie2state.length; i++) {
+            var n: any = this.localCopy.hang.movie2state[i];
+if(!n.optionUsed){
+var val = n.valueEntered.toUpperCase();
+        if (val == "A" || val == "E" || val == "I" || val == "O" || val == "U") {
+            n.valueEntered = "";
+            n.optionUsed = false;
+        } else if (this.localCopy.hang.movie2string.indexOf(val) != -1) {
             //show the letter in movie
             this.localCopy.hang.movie2.forEach(function (m:any) {
-                if (m.value == n) {
+                if (m.value == val) {
                     m.show = true;
                 }
             })
 
-            card.valueEntered = "";
-            card.optionUsed = false;
+            n.valueEntered = "";
+            n.optionUsed = false;
         } else {
-            card.valueEntered = n;
-            card.optionUsed = true;
+            n.valueEntered = val;
+            n.optionUsed = true;
         }
+break;
+}
+
+}    
+        } else {
+var v = card.value;
+        if (v == "A" || v == "E" || v == "I" || v == "O" || v == "U") {
+            //do nothing as vovels aren't clickable anyways
+        } else if (this.localCopy.hang.movie2string.indexOf(v) != -1) {
+            //show the letter in movie
+            this.localCopy.hang.movie2.forEach(function (m:any) {
+                if (m.value == v) {
+                    m.show = true;
+                }
+            })            
+        } else {  // use one of the options and show the value
+            card.clickable = false;
+            var optionMarked = false;
+            this.localCopy.hang.movie2state.forEach(function(k:any){
+                if(!optionMarked) {
+                    if(!k.optionUsed){
+                        k.optionUsed = true;
+k.valueEntered = card.value;
+optionMarked = true;
+                    }
+                }
+            })            
+        }
+        } 
+        
 
         this.checkHangGameOver2("movie2");
     }
-
+resetKeyboard2() {
+    this.alphabet2.forEach(function(v){
+if (v.value == "A" || v.value == "E" || v.value == "I" || v.value == "O" || v.value == "U") {
+            v.clickable = false;
+        } else {
+            v.clickable = true;
+        }
+    })
+}
     startHangman2(value) {
         this.localCopy.hang.isMovie2success = false;
         this.localCopy.hang.isMovie2GameOver = false;
-
+this.resetKeyboard2();
         this.localCopy.hang.movie2string = value.toUpperCase();
         var movie2 = [];
         //var that = this;
