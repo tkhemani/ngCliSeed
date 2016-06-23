@@ -553,7 +553,7 @@ this.challengeAddMoreState = true;
             this.localCopy.hang.isMovie1success = true;
             this.localCopy.hang.score1 += 1
             this.localCopy.hang.isMovie1GameOver = true;
-
+this.resetKeyboard();
             var optionsUsedC = 0;
             var that = this;
             this.localCopy.hang.movie1state.forEach(function (n:any) {
@@ -589,6 +589,7 @@ this.challengeAddMoreState = true;
             //check game over
             if (optionsUsedCount == 7) {
                 this.localCopy.hang.isMovie1GameOver = true;
+                this.resetKeyboard();
                 //this.localCopy.hang.score1 -= 1
             }
         }
@@ -667,7 +668,6 @@ if (v.value == "A" || v.value == "E" || v.value == "I" || v.value == "O" || v.va
     startHangman1(value) {
         this.localCopy.hang.isMovie1success = false;
         this.localCopy.hang.isMovie1GameOver = false;
-this.resetKeyboard();
         this.localCopy.hang.movie1string = value.toUpperCase();
         var movie1 = [];
         //var that = this;
@@ -711,7 +711,7 @@ this.resetKeyboard();
             this.localCopy.hang.isMovie2success = true;
             this.localCopy.hang.score2 += 1
             this.localCopy.hang.isMovie2GameOver = true;
-
+this.resetKeyboard2();
             var optionsUsedC = 0;
             var that = this;
             this.localCopy.hang.movie2state.forEach(function (n:any) {
@@ -746,6 +746,7 @@ this.resetKeyboard();
             //check game over
             if (optionsUsedCount == 7) {
                 this.localCopy.hang.isMovie2GameOver = true;
+                this.resetKeyboard2();
                 //this.localCopy.hang.score2 -= 1
             }
         }
@@ -823,7 +824,6 @@ if (v.value == "A" || v.value == "E" || v.value == "I" || v.value == "O" || v.va
     startHangman2(value) {
         this.localCopy.hang.isMovie2success = false;
         this.localCopy.hang.isMovie2GameOver = false;
-this.resetKeyboard2();
         this.localCopy.hang.movie2string = value.toUpperCase();
         var movie2 = [];
         //var that = this;
