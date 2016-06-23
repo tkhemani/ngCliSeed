@@ -254,11 +254,7 @@
                                         <!--     <span md-line>test</span> -->
                                     </md-card>
                                 </div>
-                            </md-card>
-
-                            <md-card *ngIf="localCopy.hang.isMovie1GameOver">
-                                <md-card-title> Answer: {{ localCopy.hang.movie1string }}</md-card-title>
-                            </md-card>
+                            </md-card>                           
                         </div>
 
                     </md-card-content>
@@ -274,7 +270,7 @@
                             <span md-suffix>({{ playerName1.characterCount }} of 20)</span>
                         </md-input>
 <md-card *ngIf="localCopy.hang.isMovie2GameOver">
-                                <md-card-title> Answer: {{ localCopy.hang.isMovie2success }}</md-card-title>
+                                <md-card-title> Answer: {{ localCopy.hang.movie2string }}</md-card-title>
                             </md-card>
                             <md-card *ngIf="!localCopy.hang.isMovie2success && localCopy.hang.isMovie2GameOver">
                 <md-card-title style="
@@ -503,6 +499,6 @@
         user-select: none;
     }
     .gameOverIndicator {
-        background: #0feabc61; 
+        background: rgba(128, 128, 128, 0.25); 
     }
 </style>
