@@ -31,6 +31,7 @@ HOSTING
 --- 
 
 UPCOMING GLOBAL FEATURES
+- [ ] Service Workers (courtesy of ng cli) for offline support 
 - [ ] CHROME/ANDROID NOTIFICATIONS WHEN ACTIONS ARE REQUIRED FROM PLAYER
 - [ ] start game only when both player are in the session
 - [x] deploy to gh pages
