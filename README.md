@@ -8,7 +8,7 @@ LOCAL DEV SETUP
 --- 
 
 LOCAL HOSTING
-* xcopy C:\temp\hat\dist C:\inetpub\wwwroot /s /e
+* Use this to host on IIS on a windows box: xcopy C:\temp\hat\dist C:\inetpub\wwwroot /s /e
 * Next Browse http://<machine name>/index.html
 
 --- 
