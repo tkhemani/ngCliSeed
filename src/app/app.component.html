@@ -195,9 +195,9 @@
                 <md-card class="hangman-item" [class.gameOverIndicator]="localCopy.hang.isMovie1GameOver">
                     <md-card-content>
                         <md-icon>movie_filter</md-icon>
-                        <md-input type="text" #playerName maxLength="20" placeholder="Enter Movie for T..."
+                        <md-input type="text" #playerName maxLength="30" placeholder="Enter Movie for T..."
                                   (keyup.enter)="startHangman1(playerName.value);playerName.value = '' ">
-                            <span md-suffix>({{ playerName.characterCount }} of 20)</span>
+                            <span md-suffix>({{ playerName.characterCount }} of 30)</span>
                         </md-input>
                         <md-card *ngIf="localCopy.hang.isMovie1GameOver">
                                 <md-card-title> Answer: {{ localCopy.hang.movie1string }}</md-card-title>
@@ -243,7 +243,7 @@
                                 </div>
                             </md-card>
 
-                            <md-card *ngIf="localCopy.hang.movie1string.length >1" style="margin-top: 10px;width: 400px">
+                            <md-card *ngIf="localCopy.hang.movie1string.length >1" style="margin-top: 10px;width: 300px">
                                 <div class="card-container  wrap">
                                     <md-card #singleCard [class.selectCard]="!card.clickable" (click)="alphabet1Clicked(card)"
                                              class="alphabetOptions-item"
@@ -265,9 +265,9 @@
                 <md-card class="hangman-item" [class.gameOverIndicator]="localCopy.hang.isMovie2GameOver">
                     <md-card-content>
                         <md-icon>movie_filter</md-icon>
-                        <md-input type="text" #playerName1 maxLength="20" placeholder="Enter Movie for H..."
+                        <md-input type="text" #playerName1 maxLength="30" placeholder="Enter Movie for H..."
                                   (keyup.enter)="startHangman2(playerName1.value);playerName1.value = '' ">
-                            <span md-suffix>({{ playerName1.characterCount }} of 20)</span>
+                            <span md-suffix>({{ playerName1.characterCount }} of 30)</span>
                         </md-input>
 <md-card *ngIf="localCopy.hang.isMovie2GameOver">
                                 <md-card-title> Answer: {{ localCopy.hang.movie2string }}</md-card-title>
@@ -313,7 +313,7 @@
                                 </div>
                             </md-card>
 
-                            <md-card *ngIf="localCopy.hang.movie2string.length >1" style="margin-top: 10px;width: 400px">
+                            <md-card *ngIf="localCopy.hang.movie2string.length >1" style="margin-top: 10px;width: 300px">
                                 <div class="card-container  wrap">
                                     <md-card #singleCard [class.selectCard]="!card.clickable" (click)="alphabet2Clicked(card)"
                                              class="alphabetOptions-item"
