@@ -11,8 +11,8 @@ import {PushNotificationComponent} from './ng2-notifications';
 
 //import * as _ from 'lodash';
 
-declare var _:any;
- 
+declare var _: any;
+
 @Component({
     moduleId: module.id,
     selector: 'app-root',
@@ -33,96 +33,94 @@ export class AppComponent {
         optionUsed: false
     };
 
-alphabet1 = [
-    {value: 'A', clickable: false },
-    {value: 'B', clickable: true },
-    {value: 'C', clickable: true },
-    {value: 'D', clickable: true },
-    {value: 'E', clickable: false },
-    {value: 'F', clickable: true },
-    {value: 'G', clickable: true },
-    {value: 'H', clickable: true },
-    {value: 'I', clickable: false },
-    {value: 'J', clickable: true },
-    {value: 'K', clickable: true },
-    {value: 'L', clickable: true },
-    {value: 'M', clickable: true },
-    {value: 'N', clickable: true },
-    {value: 'O', clickable: false },
-    {value: 'P', clickable: true },
-    {value: 'Q', clickable: true },
-    {value: 'R', clickable: true },
-    {value: 'S', clickable: true },
-    {value: 'T', clickable: true },
-    {value: 'U', clickable: false },
-    {value: 'V', clickable: true },
-    {value: 'W', clickable: true },
-    {value: 'X', clickable: true },
-    {value: 'Y', clickable: true },
-    {value: 'Z', clickable: true }
-];  
+    alphabet1 = [
+        { value: 'A', clickable: false },
+        { value: 'B', clickable: true },
+        { value: 'C', clickable: true },
+        { value: 'D', clickable: true },
+        { value: 'E', clickable: false },
+        { value: 'F', clickable: true },
+        { value: 'G', clickable: true },
+        { value: 'H', clickable: true },
+        { value: 'I', clickable: false },
+        { value: 'J', clickable: true },
+        { value: 'K', clickable: true },
+        { value: 'L', clickable: true },
+        { value: 'M', clickable: true },
+        { value: 'N', clickable: true },
+        { value: 'O', clickable: false },
+        { value: 'P', clickable: true },
+        { value: 'Q', clickable: true },
+        { value: 'R', clickable: true },
+        { value: 'S', clickable: true },
+        { value: 'T', clickable: true },
+        { value: 'U', clickable: false },
+        { value: 'V', clickable: true },
+        { value: 'W', clickable: true },
+        { value: 'X', clickable: true },
+        { value: 'Y', clickable: true },
+        { value: 'Z', clickable: true }
+    ];
 
-alphabet2 = [
-    {value: 'A', clickable: false },
-    {value: 'B', clickable: true },
-    {value: 'C', clickable: true },
-    {value: 'D', clickable: true },
-    {value: 'E', clickable: false },
-    {value: 'F', clickable: true },
-    {value: 'G', clickable: true },
-    {value: 'H', clickable: true },
-    {value: 'I', clickable: false },
-    {value: 'J', clickable: true },
-    {value: 'K', clickable: true },
-    {value: 'L', clickable: true },
-    {value: 'M', clickable: true },
-    {value: 'N', clickable: true },
-    {value: 'O', clickable: false },
-    {value: 'P', clickable: true },
-    {value: 'Q', clickable: true },
-    {value: 'R', clickable: true },
-    {value: 'S', clickable: true },
-    {value: 'T', clickable: true },
-    {value: 'U', clickable: false },
-    {value: 'V', clickable: true },
-    {value: 'W', clickable: true },
-    {value: 'X', clickable: true },
-    {value: 'Y', clickable: true },
-    {value: 'Z', clickable: true }
-];
-public notification: any = {
-    show: false,
-    title: 'New Angular 2 Library!',
-    body: 'ng2-notifications',
-    icon: 'https://goo.gl/3eqeiE',
-    action: function () {
-      window.open('https://github.com/alexcastillo/ng2-notifications');
-    }
-  };
+    alphabet2 = [
+        { value: 'A', clickable: false },
+        { value: 'B', clickable: true },
+        { value: 'C', clickable: true },
+        { value: 'D', clickable: true },
+        { value: 'E', clickable: false },
+        { value: 'F', clickable: true },
+        { value: 'G', clickable: true },
+        { value: 'H', clickable: true },
+        { value: 'I', clickable: false },
+        { value: 'J', clickable: true },
+        { value: 'K', clickable: true },
+        { value: 'L', clickable: true },
+        { value: 'M', clickable: true },
+        { value: 'N', clickable: true },
+        { value: 'O', clickable: false },
+        { value: 'P', clickable: true },
+        { value: 'Q', clickable: true },
+        { value: 'R', clickable: true },
+        { value: 'S', clickable: true },
+        { value: 'T', clickable: true },
+        { value: 'U', clickable: false },
+        { value: 'V', clickable: true },
+        { value: 'W', clickable: true },
+        { value: 'X', clickable: true },
+        { value: 'Y', clickable: true },
+        { value: 'Z', clickable: true }
+    ];
+    public notification: any = {
+        show: false,
+        title: 'New Angular 2 Library!',
+        body: 'ng2-notifications',
+        icon: 'https://goo.gl/3eqeiE',
+        action: function () {
+            window.open('https://github.com/alexcastillo/ng2-notifications');
+        }
+    };
 
-    challengeAddMoreState = false;
-    //heroes = ['Windstorm', 'Bombasto', 'Magneta', 'Tornado'];
-    //testitem = { name: "test", cards: [1,2] };
+    challengeAddMoreState = false;    
     otherPlayerName = null;
     gameStarted = false;
     e1 = null;
     challengeState = false;
     myTurn = false;
-    item:FirebaseObjectObservable<any>;
+    item: FirebaseObjectObservable<any>;
     cardOptions = [
-        {value: "1", selected: false},
-        {value: "2", selected: false},
-        {value: "3", selected: false},
-        {value: "4", selected: false},
-        {value: "5", selected: false},
-        {value: "6", selected: false},
-        {value: "7", selected: false},
-        {value: "8", selected: false},
-        {value: "9", selected: false},
-        {value: "10", selected: false},
-        {value: "J", selected: false},
-        {value: "Q", selected: false},
-        {value: "K", selected: false}
+        { value: "1", selected: false },
+        { value: "2", selected: false },
+        { value: "3", selected: false },
+        { value: "4", selected: false },
+        { value: "5", selected: false },
+        { value: "6", selected: false },
+        { value: "7", selected: false },
+        { value: "8", selected: false },
+        { value: "9", selected: false },
+        { value: "10", selected: false },
+        { value: "J", selected: false },
+        { value: "Q", selected: false },
+        { value: "K", selected: false }
     ]
     // af = null;
     root = null;
@@ -157,29 +155,29 @@ public notification: any = {
     };
     //"hang" : [{"p1": {"word": "", "score": ""}}, {"p2": {"word": "", "score": ""}}]
     //localCopy = {};
-el = null;
-//     ngOnInit() {
-//     this.el = this.element.nativeElement;
-//     console.log(this.el);
-//   }
-  
-//   ngDoCheck() {
-// this.changeDetected = true;
-//   }
-    constructor(af:AngularFire, public ar:ApplicationRef ) {
-        
+    el = null;
+    //     ngOnInit() {
+    //     this.el = this.element.nativeElement;
+    //     console.log(this.el);
+    //   }
+
+    //   ngDoCheck() {
+    // this.changeDetected = true;
+    //   }
+    constructor(af: AngularFire, public ar: ApplicationRef) {
+
         //console.clear();
         //this.af = af;
-        
-//this.element.nativeElement // <- your direct element reference 
 
-        this.root = af.database.object('/root');
-        //this.root = af.database.object('/root/dev'); // for local development and testing
-        
-var that = this;
-        this.root.subscribe(function(data) {
-            if(data.p1 && data.p1.length > 1) data.p1 = data.p1.map(n => n.value).sort().map(function(n) {return {value:n, selected: false}});
-                        if(data.p2 && data.p2.length > 1) data.p2 = data.p2.map(n => n.value).sort().map(function(n) {return {value:n, selected: false}});
+        //this.element.nativeElement // <- your direct element reference 
+
+        //this.root = af.database.object('/root');
+        this.root = af.database.object('/root/dev'); // for local development and testing
+
+        var that = this;
+        this.root.subscribe(function (data) {
+            if (data.p1 && data.p1.length > 1) data.p1 = data.p1.map(n => n.value).sort().map(function (n) { return { value: n, selected: false } });
+            if (data.p2 && data.p2.length > 1) data.p2 = data.p2.map(n => n.value).sort().map(function (n) { return { value: n, selected: false } });
 
             that.localCopy = data;
             that.processHangmanData();
@@ -203,10 +201,10 @@ var that = this;
                 //if(that.localCopy.cardCache.length > 1)
             }
 
-//             if (that.localCopy.cardCache && that.localCopy.cardCache.length > 0){
-//                    that.challengeState = true;                   
-//             }
-that.dummyFunction(); // to refresh the screen
+            //             if (that.localCopy.cardCache && that.localCopy.cardCache.length > 0){
+            //                    that.challengeState = true;                   
+            //             }
+            that.dummyFunction(); // to refresh the screen
         });
         //this.item = af.database.object('/root/item');
         //this.item.remove();
@@ -214,23 +212,23 @@ that.dummyFunction(); // to refresh the screen
         //this.ngDoCheck();
     }
 
-dummyCard () {
-    console.log(this);
-}
-    dummyFunction() {  
-this.ar.tick() 
-//     setTimeout(function(){ 
-//  var temp = Object.assign({}, this.localCopy);
-//         this.localCopy = Object.assign({}, temp);
-//      }, 4000);
-        
-//         var temp = Object.assign({}, this.localCopy);
-//         this.localCopy = Object.assign({}, temp);
-//         console.log(this);
-//         if(this.localCopy.cardCache){
-//         this.localCopy.cardCache = this.localCopy.cardCache.slice();           
-//         }
-//         this.challengeState = this.challengeState;
+    dummyCard() {
+        console.log(this);
+    }
+    dummyFunction() {
+        this.ar.tick()
+        //     setTimeout(function(){ 
+        //  var temp = Object.assign({}, this.localCopy);
+        //         this.localCopy = Object.assign({}, temp);
+        //      }, 4000);
+
+        //         var temp = Object.assign({}, this.localCopy);
+        //         this.localCopy = Object.assign({}, temp);
+        //         console.log(this);
+        //         if(this.localCopy.cardCache){
+        //         this.localCopy.cardCache = this.localCopy.cardCache.slice();           
+        //         }
+        //         this.challengeState = this.challengeState;
     }
 
     setPlayer(playerName) {
@@ -247,33 +245,33 @@ this.ar.tick()
         if (this.playerName == "p1") {
             //  this.resetGame()
             this.otherPlayerName = "p2";
-//             this.localCopy[this.playerName] = [{value: "5", selected: false}, {
-//                 value: "6",
-//                 selected: false
-//             }, {value: "7", selected: false}, {value: "8", selected: false}];
+            //             this.localCopy[this.playerName] = [{value: "5", selected: false}, {
+            //                 value: "6",
+            //                 selected: false
+            //             }, {value: "7", selected: false}, {value: "8", selected: false}];
 
-var dataSet = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
-this.localCopy[this.playerName] = [];
-this.localCopy[this.otherPlayerName] = [];
-var that = this;
-dataSet.forEach(function(n) {
-    var randomNo = Math.floor(Math.random() * 2) +1;
-if(randomNo == 1 && that.localCopy[that.playerName].length < 26) {
-    that.localCopy[that.playerName].push({value: n, selected: false})
-} else if(randomNo == 2 && that.localCopy[that.otherPlayerName].length < 26) {
-    that.localCopy[that.otherPlayerName].push({value: n, selected: false})
-} else {
-    if(that.localCopy[that.playerName].length < 26) {
-         that.localCopy[that.playerName].push({value: n, selected: false})   
-    } else {
-           that.localCopy[that.otherPlayerName].push({value: n, selected: false}) 
-    }
-}
-})
+            var dataSet = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
+            this.localCopy[this.playerName] = [];
+            this.localCopy[this.otherPlayerName] = [];
+            var that = this;
+            dataSet.forEach(function (n) {
+                var randomNo = Math.floor(Math.random() * 2) + 1;
+                if (randomNo == 1 && that.localCopy[that.playerName].length < 26) {
+                    that.localCopy[that.playerName].push({ value: n, selected: false })
+                } else if (randomNo == 2 && that.localCopy[that.otherPlayerName].length < 26) {
+                    that.localCopy[that.otherPlayerName].push({ value: n, selected: false })
+                } else {
+                    if (that.localCopy[that.playerName].length < 26) {
+                        that.localCopy[that.playerName].push({ value: n, selected: false })
+                    } else {
+                        that.localCopy[that.otherPlayerName].push({ value: n, selected: false })
+                    }
+                }
+            })
 
-if(this.localCopy[this.playerName].length < 26) {
-    this.localCopy[this.playerName] 
-}
+            if (this.localCopy[this.playerName].length < 26) {
+                this.localCopy[this.playerName]
+            }
         } else {
             this.otherPlayerName = "p1";
             //this.localCopy[this.playerName] = [{value: "J", selected: false}, {value: "K", selected: false}, {value: "1", selected: false}, {value: "2", selected: false}, {value: "2", selected: false}];
@@ -436,12 +434,12 @@ if(this.localCopy[this.playerName].length < 26) {
             if (!this.gameOverCheck()) {
                 if (this.localCopy.whoPassed != "") {  // if round is old ie whoPassed is not empty
                     this.localCopy.cardCache.forEach(function (n) {
-                        that.localCopy[that.playerName].push({value: n, selected: false});
+                        that.localCopy[that.playerName].push({ value: n, selected: false });
                     })
                 }
 
                 this.localCopy.turnCards.forEach(function (n) {
-                    that.localCopy[that.playerName].push({value: n, selected: false});
+                    that.localCopy[that.playerName].push({ value: n, selected: false });
                 })
                 this.localCopy.whoseTurn = this.otherPlayerName;
 
@@ -449,16 +447,16 @@ if(this.localCopy[this.playerName].length < 26) {
             }
 
         } else {
-           // if (this.localCopy.whoPassed != "" || this.challengeAddMoreState) {  // if round is old ie whoPassed is not empty
-                if(this.localCopy.cardCache){
-                 this.localCopy.cardCache.forEach(function (n) {
-                    that.localCopy[that.otherPlayerName].push({value: n, selected: false});
-                })   
-                }
-           // }
+            // if (this.localCopy.whoPassed != "" || this.challengeAddMoreState) {  // if round is old ie whoPassed is not empty
+            if (this.localCopy.cardCache) {
+                this.localCopy.cardCache.forEach(function (n) {
+                    that.localCopy[that.otherPlayerName].push({ value: n, selected: false });
+                })
+            }
+            // }
 
             that.localCopy.turnCards.forEach(function (n) {
-                that.localCopy[that.otherPlayerName].push({value: n, selected: false});
+                that.localCopy[that.otherPlayerName].push({ value: n, selected: false });
             })
             this.localCopy.whoseTurn = this.playerName;
         }
@@ -488,9 +486,9 @@ if(this.localCopy[this.playerName].length < 26) {
                 card.selected = false;
             }
 
-if (this.myTurn && this.localCopy.cardCache && this.localCopy.cardCache.length > 0) {
-this.challengeAddMoreState = true;  
-}   
+            if (this.myTurn && this.localCopy.cardCache && this.localCopy.cardCache.length > 0) {
+                this.challengeAddMoreState = true;
+            }
 
 
             if (this.challengeAddMoreState) {
@@ -505,26 +503,26 @@ this.challengeAddMoreState = true;
         }
     }
 
-    alphabet1Clicked (card) {
-        if(card.clickable) {
+    alphabet1Clicked(card) {
+        if (card.clickable) {
             this.option1Clicked(card);
-        card.clickable = false;
+            card.clickable = false;
         }
     }
 
-    alphabet2Clicked (card) {
-        if(card.clickable) {
+    alphabet2Clicked(card) {
+        if (card.clickable) {
             this.option2Clicked(card);
-        card.clickable = false;
+            card.clickable = false;
         }
     }
 
-    save(newName:string) {
-        this.item.set({name: newName});
+    save(newName: string) {
+        this.item.set({ name: newName });
     }
 
-    update(newSize:string) {
-        this.item.update({size: newSize});
+    update(newSize: string) {
+        this.item.update({ size: newSize });
     }
 
     delete() {
@@ -544,7 +542,7 @@ this.challengeAddMoreState = true;
 
         //check if won
         var falseCount = 0;
-        this.localCopy.hang[movie].forEach(function (m:any) {
+        this.localCopy.hang[movie].forEach(function (m: any) {
             if (m.show == false) {
                 falseCount += 1;
             }
@@ -556,7 +554,7 @@ this.challengeAddMoreState = true;
 
             var optionsUsedC = 0;
             var that = this;
-            this.localCopy.hang.movie1state.forEach(function (n:any) {
+            this.localCopy.hang.movie1state.forEach(function (n: any) {
 
                 if (n.optionUsed == false) {
                     //that.localCopy.hang.isMovie2success = false;
@@ -577,7 +575,7 @@ this.challengeAddMoreState = true;
             //check lost
             var optionsUsedCount = 0;
             var that = this;
-            this.localCopy.hang.movie1state.forEach(function (n:any) {
+            this.localCopy.hang.movie1state.forEach(function (n: any) {
 
                 if (n.optionUsed == false) {
                     that.localCopy.hang.isMovie1success = false;
@@ -597,90 +595,90 @@ this.challengeAddMoreState = true;
 
     option1Clicked(card) {
         console.log(card);
-        if(card.valueEntered){ // if user has NOT used the keyboard
-        this.alphabet1.forEach(function(n){if(n.value.toLowerCase() == card.valueEntered.toLowerCase()) n.clickable = false})      
+        if (card.valueEntered) { // if user has NOT used the keyboard
+            this.alphabet1.forEach(function (n) { if (n.value.toLowerCase() == card.valueEntered.toLowerCase()) n.clickable = false })
 
-        for(var i=0; i< this.localCopy.hang.movie1state.length; i++) {
-            var n: any = this.localCopy.hang.movie1state[i];
-if(!n.optionUsed){
-var val = n.valueEntered.toUpperCase();
-        if (val == "A" || val == "E" || val == "I" || val == "O" || val == "U") {
-            n.valueEntered = "";
-            n.optionUsed = false;
-        } else if (this.localCopy.hang.movie1string.indexOf(val) != -1) {
-            //show the letter in movie
-            this.localCopy.hang.movie1.forEach(function (m:any) {
-                if (m.value == val) {
-                    m.show = true;
-                }
-            })
+            for (var i = 0; i < this.localCopy.hang.movie1state.length; i++) {
+                var n: any = this.localCopy.hang.movie1state[i];
+                if (!n.optionUsed) {
+                    var val = n.valueEntered.toUpperCase();
+                    if (val == "A" || val == "E" || val == "I" || val == "O" || val == "U") {
+                        n.valueEntered = "";
+                        n.optionUsed = false;
+                    } else if (this.localCopy.hang.movie1string.indexOf(val) != -1) {
+                        //show the letter in movie
+                        this.localCopy.hang.movie1.forEach(function (m: any) {
+                            if (m.value == val) {
+                                m.show = true;
+                            }
+                        })
 
-            n.valueEntered = "";
-            n.optionUsed = false;
-        } else {
-            n.valueEntered = val;
-            n.optionUsed = true;
-        }
-break;
-}
-
-}    
-        } else {
-var v = card.value;
-        if (v == "A" || v == "E" || v == "I" || v == "O" || v == "U") {
-            //do nothing as vovels aren't clickable anyways
-        } else if (this.localCopy.hang.movie1string.indexOf(v) != -1) {
-            //show the letter in movie
-            this.localCopy.hang.movie1.forEach(function (m:any) {
-                if (m.value == v) {
-                    m.show = true;
-                }
-            })            
-        } else {  // use one of the options and show the value
-            card.clickable = false;
-            var optionMarked = false;
-            this.localCopy.hang.movie1state.forEach(function(k:any){
-                if(!optionMarked) {
-                    if(!k.optionUsed){
-                        k.optionUsed = true;
-k.valueEntered = card.value;
-optionMarked = true;
+                        n.valueEntered = "";
+                        n.optionUsed = false;
+                    } else {
+                        n.valueEntered = val;
+                        n.optionUsed = true;
                     }
+                    break;
                 }
-            })            
+
+            }
+        } else {
+            var v = card.value;
+            if (v == "A" || v == "E" || v == "I" || v == "O" || v == "U") {
+                //do nothing as vovels aren't clickable anyways
+            } else if (this.localCopy.hang.movie1string.indexOf(v) != -1) {
+                //show the letter in movie
+                this.localCopy.hang.movie1.forEach(function (m: any) {
+                    if (m.value == v) {
+                        m.show = true;
+                    }
+                })
+            } else {  // use one of the options and show the value
+                card.clickable = false;
+                var optionMarked = false;
+                this.localCopy.hang.movie1state.forEach(function (k: any) {
+                    if (!optionMarked) {
+                        if (!k.optionUsed) {
+                            k.optionUsed = true;
+                            k.valueEntered = card.value;
+                            optionMarked = true;
+                        }
+                    }
+                })
+            }
         }
-        } 
-        
+
 
         this.checkHangGameOver("movie1");
     }
 
-resetKeyboard() {
-    this.alphabet1.forEach(function(v){
-if (v.value == "A" || v.value == "E" || v.value == "I" || v.value == "O" || v.value == "U") {
-            v.clickable = false;
-        } else {
-            v.clickable = true;
-        }
-    })
-}
+    resetKeyboard() {
+        this.alphabet1.forEach(function (v) {
+            if (v.value == "A" || v.value == "E" || v.value == "I" || v.value == "O" || v.value == "U") {
+                v.clickable = false;
+            } else {
+                v.clickable = true;
+            }
+        })
+    }
     startHangman1(value) {
         this.localCopy.hang.isMovie1success = false;
         this.localCopy.hang.isMovie1GameOver = false;
-this.resetKeyboard();
+        this.resetKeyboard();
         this.localCopy.hang.movie1string = value.toUpperCase();
         var movie1 = [];
         //var that = this;
         //that.localCopy.hang.movie1 = [];
         value.toUpperCase().split('').forEach(function (n) {
             if (n == "A" || n == "E" || n == "I" || n == "O" || n == "U" || n == " ") {
-                movie1.push({"value": n, "show": true});
+                movie1.push({ "value": n, "show": true });
                 //that.localCopy.hang.movie1.push(n);
                 //that.localCopy.hang.movie1.push({"value":n, "show":true});
                 //console.log(n);
             } else {
                 //console.log(n);
-                movie1.push({"value": n, "show": false});
+                movie1.push({ "value": n, "show": false });
                 //that.localCopy.hang.movie1.push({"value":n, "show":false});
             }
         })
@@ -688,7 +686,7 @@ this.resetKeyboard();
         this.movie1Entered = true;
         var movie1state = []
         "hangman".toUpperCase().split('').forEach(function (n) {
-            movie1state.push({"placeHolder": n, "optionUsed": false, "valueEntered": ""});
+            movie1state.push({ "placeHolder": n, "optionUsed": false, "valueEntered": "" });
 
         })
         this.localCopy.hang.movie1state = movie1state;
@@ -702,7 +700,7 @@ this.resetKeyboard();
 
         //check if won
         var falseCount = 0;
-        this.localCopy.hang[movie].forEach(function (m:any) {
+        this.localCopy.hang[movie].forEach(function (m: any) {
             if (m.show == false) {
                 falseCount += 1;
             }
@@ -714,7 +712,7 @@ this.resetKeyboard();
 
             var optionsUsedC = 0;
             var that = this;
-            this.localCopy.hang.movie2state.forEach(function (n:any) {
+            this.localCopy.hang.movie2state.forEach(function (n: any) {
 
                 if (n.optionUsed == false) {
                     //that.localCopy.hang.isMovie2success = false;
@@ -734,7 +732,7 @@ this.resetKeyboard();
             //check lost
             var optionsUsedCount = 0;
             var that = this;
-            this.localCopy.hang.movie2state.forEach(function (n:any) {
+            this.localCopy.hang.movie2state.forEach(function (n: any) {
 
                 if (n.optionUsed == false) {
                     that.localCopy.hang.isMovie2success = false;
@@ -754,89 +752,89 @@ this.resetKeyboard();
 
     option2Clicked(card) {
         console.log(card);
-        if(card.valueEntered){ // if user has NOT used the keyboard
-        this.alphabet2.forEach(function(n){if(n.value.toLowerCase() == card.valueEntered.toLowerCase()) n.clickable = false})      
+        if (card.valueEntered) { // if user has NOT used the keyboard
+            this.alphabet2.forEach(function (n) { if (n.value.toLowerCase() == card.valueEntered.toLowerCase()) n.clickable = false })
 
-        for(var i=0; i< this.localCopy.hang.movie2state.length; i++) {
-            var n: any = this.localCopy.hang.movie2state[i];
-if(!n.optionUsed){
-var val = n.valueEntered.toUpperCase();
-        if (val == "A" || val == "E" || val == "I" || val == "O" || val == "U") {
-            n.valueEntered = "";
-            n.optionUsed = false;
-        } else if (this.localCopy.hang.movie2string.indexOf(val) != -1) {
-            //show the letter in movie
-            this.localCopy.hang.movie2.forEach(function (m:any) {
-                if (m.value == val) {
-                    m.show = true;
-                }
-            })
+            for (var i = 0; i < this.localCopy.hang.movie2state.length; i++) {
+                var n: any = this.localCopy.hang.movie2state[i];
+                if (!n.optionUsed) {
+                    var val = n.valueEntered.toUpperCase();
+                    if (val == "A" || val == "E" || val == "I" || val == "O" || val == "U") {
+                        n.valueEntered = "";
+                        n.optionUsed = false;
+                    } else if (this.localCopy.hang.movie2string.indexOf(val) != -1) {
+                        //show the letter in movie
+                        this.localCopy.hang.movie2.forEach(function (m: any) {
+                            if (m.value == val) {
+                                m.show = true;
+                            }
+                        })
 
-            n.valueEntered = "";
-            n.optionUsed = false;
-        } else {
-            n.valueEntered = val;
-            n.optionUsed = true;
-        }
-break;
-}
-
-}    
-        } else {
-var v = card.value;
-        if (v == "A" || v == "E" || v == "I" || v == "O" || v == "U") {
-            //do nothing as vovels aren't clickable anyways
-        } else if (this.localCopy.hang.movie2string.indexOf(v) != -1) {
-            //show the letter in movie
-            this.localCopy.hang.movie2.forEach(function (m:any) {
-                if (m.value == v) {
-                    m.show = true;
-                }
-            })            
-        } else {  // use one of the options and show the value
-            card.clickable = false;
-            var optionMarked = false;
-            this.localCopy.hang.movie2state.forEach(function(k:any){
-                if(!optionMarked) {
-                    if(!k.optionUsed){
-                        k.optionUsed = true;
-k.valueEntered = card.value;
-optionMarked = true;
+                        n.valueEntered = "";
+                        n.optionUsed = false;
+                    } else {
+                        n.valueEntered = val;
+                        n.optionUsed = true;
                     }
+                    break;
                 }
-            })            
+
+            }
+        } else {
+            var v = card.value;
+            if (v == "A" || v == "E" || v == "I" || v == "O" || v == "U") {
+                //do nothing as vovels aren't clickable anyways
+            } else if (this.localCopy.hang.movie2string.indexOf(v) != -1) {
+                //show the letter in movie
+                this.localCopy.hang.movie2.forEach(function (m: any) {
+                    if (m.value == v) {
+                        m.show = true;
+                    }
+                })
+            } else {  // use one of the options and show the value
+                card.clickable = false;
+                var optionMarked = false;
+                this.localCopy.hang.movie2state.forEach(function (k: any) {
+                    if (!optionMarked) {
+                        if (!k.optionUsed) {
+                            k.optionUsed = true;
+                            k.valueEntered = card.value;
+                            optionMarked = true;
+                        }
+                    }
+                })
+            }
         }
-        } 
-        
+
 
         this.checkHangGameOver2("movie2");
     }
-resetKeyboard2() {
-    this.alphabet2.forEach(function(v){
-if (v.value == "A" || v.value == "E" || v.value == "I" || v.value == "O" || v.value == "U") {
-            v.clickable = false;
-        } else {
-            v.clickable = true;
-        }
-    })
-}
+    resetKeyboard2() {
+        this.alphabet2.forEach(function (v) {
+            if (v.value == "A" || v.value == "E" || v.value == "I" || v.value == "O" || v.value == "U") {
+                v.clickable = false;
+            } else {
+                v.clickable = true;
+            }
+        })
+    }
     startHangman2(value) {
         this.localCopy.hang.isMovie2success = false;
         this.localCopy.hang.isMovie2GameOver = false;
-this.resetKeyboard2();
+        this.resetKeyboard2();
         this.localCopy.hang.movie2string = value.toUpperCase();
         var movie2 = [];
         //var that = this;
         //that.localCopy.hang.movie1 = [];
         value.toUpperCase().split('').forEach(function (n) {
             if (n == "A" || n == "E" || n == "I" || n == "O" || n == "U" || n == " ") {
-                movie2.push({"value": n, "show": true});
+                movie2.push({ "value": n, "show": true });
                 //that.localCopy.hang.movie1.push(n);
                 //that.localCopy.hang.movie1.push({"value":n, "show":true});
                 console.log(n);
             } else {
                 console.log(n);
-                movie2.push({"value": n, "show": false});
+                movie2.push({ "value": n, "show": false });
                 //that.localCopy.hang.movie1.push({"value":n, "show":false});
             }
         })
@@ -844,7 +842,7 @@ this.resetKeyboard2();
         this.movie2Entered = true;
         var movie2state = []
         "hangman".toUpperCase().split('').forEach(function (n) {
-            movie2state.push({"placeHolder": n, "optionUsed": false, "valueEntered": ""});
+            movie2state.push({ "placeHolder": n, "optionUsed": false, "valueEntered": "" });
 
         })
         this.localCopy.hang.movie2state = movie2state;

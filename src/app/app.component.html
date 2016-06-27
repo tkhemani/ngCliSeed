@@ -1,54 +1,3 @@
-<!-- <md-input type="text" #playerName placeholder="Name..." (keyup.enter)="startGame(playerName.value)"></md-input> -->
-
-<!-- <main class="container">
-
-      <push-notification #myNotification
-        [title]="notification.title"
-        [body]="notification.body"
-        [icon]="notification.icon"
-        [closeDelay]="notification.closeDelay"
-        (action)="notification.action($event)">
-      </push-notification>
-
-      <article class="row">
-        <header class="col s12">
-          <h5>
-            <i class="left material-icons">add_alert</i>
-            <span>ng2-notifications</span>
-          </h5>
-        </header>
-        <form (submit)="myNotification.show()" class="col s12">
-          <div class="row">
-            <div class="input-field col s6">
-              <input type="text" id="title" [(ngModel)]="notification.title" class="validate" required />
-              <label class="active" for="title">Title</label>
-            </div>
-            <div class="input-field col s6">
-              <input type="text" id="body" [(ngModel)]="notification.body" class="validate" required />
-              <label class="active" for="body">Body</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s6">
-              <input type="text" id="icon" [(ngModel)]="notification.icon" class="validate" />
-              <label class="active" for="icon">Icon</label>
-            </div>
-            <div class="input-field col s6">
-              <input type="text" id="closeDelay" placeholder="Milliseconds" [(ngModel)]="notification.closeDelay" class="validate" />
-              <label class="active" for="closeDelay">Close Delay</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s12">
-              <button type="submit" class="btn red darken-2 waves-effect waves-light">Show Notification</button>
-            </div>
-          </div>
-        </form>
-      </article>
-
-    </main>
- -->
-
 <md-toolbar color="primary">
     HAT MPGs
   <span *ngIf="gameStarted">
@@ -63,6 +12,30 @@
 
 
 <md-tab-group class="demo-tab-group">
+    <md-tab>
+        <template md-tab-label>SPS</template>
+        <template md-tab-content>
+
+<md-card style="height: 33px;width: 100px;background: aliceblue;">
+                    <md-card-subtitle style="
+    font-weight: 600;
+    align-items: center;
+">Scoreboard</md-card-subtitle>
+                    <md-card-title>T: {{ localCopy.hang.score1 }}, H: {{ localCopy.hang.score2 }}</md-card-title>
+                </md-card>
+                <button md-raised-button (click)="startGame()" color="primary" style="margin-left: 30px;"
+                            [disabled]="!localCopy.resetState">T Ready
+                    </button>
+                    <button md-raised-button (click)="startGame()" color="primary" style="margin-left: 30px;"
+                            [disabled]="!localCopy.resetState">H Ready
+                    </button>
+            <md-card style="    margin-top: 10px;">
+                <md-card-content>
+                    </md-card-content>
+            </md-card>
+                </template>
+    </md-tab>
+
     <md-tab>
         <template md-tab-label>Bluff</template>
         <template md-tab-content>
