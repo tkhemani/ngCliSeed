@@ -31,6 +31,8 @@ HOSTING
 --- 
 
 UPCOMING GLOBAL FEATURES
+- [ ] Rename the repo and site to something gamey
+- [ ] Create alias for the site using some free alias svc
 - [ ] Service Workers (courtesy of ng cli) for offline support 
 - [ ] CHROME/ANDROID NOTIFICATIONS WHEN ACTIONS ARE REQUIRED FROM PLAYER
 - [ ] start game only when both player are in the session
