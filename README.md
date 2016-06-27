@@ -62,7 +62,8 @@ UPCOMING HANGMAN FEATURES
 
 UPCOMING BLUFF FEATURES
 - [ ] game should persist across mobile and desktop...
-
+- [ ] Instant rewards are fun, so give points for each successful catch and/or bluff
+- [ ] Allow for smaller games with a subset of the deck like say8 cards each ie 16 total cards comprising of just 1 to 4 of the deck or even random 16 cards from the deck...let the user decide
 --- 
 
 ISSUES
