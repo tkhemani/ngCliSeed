@@ -1,60 +1,9 @@
-<!-- <md-input type="text" #playerName placeholder="Name..." (keyup.enter)="startGame(playerName.value)"></md-input> -->
-
-<!-- <main class="container">
-
-      <push-notification #myNotification
-        [title]="notification.title"
-        [body]="notification.body"
-        [icon]="notification.icon"
-        [closeDelay]="notification.closeDelay"
-        (action)="notification.action($event)">
-      </push-notification>
-
-      <article class="row">
-        <header class="col s12">
-          <h5>
-            <i class="left material-icons">add_alert</i>
-            <span>ng2-notifications</span>
-          </h5>
-        </header>
-        <form (submit)="myNotification.show()" class="col s12">
-          <div class="row">
-            <div class="input-field col s6">
-              <input type="text" id="title" [(ngModel)]="notification.title" class="validate" required />
-              <label class="active" for="title">Title</label>
-            </div>
-            <div class="input-field col s6">
-              <input type="text" id="body" [(ngModel)]="notification.body" class="validate" required />
-              <label class="active" for="body">Body</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s6">
-              <input type="text" id="icon" [(ngModel)]="notification.icon" class="validate" />
-              <label class="active" for="icon">Icon</label>
-            </div>
-            <div class="input-field col s6">
-              <input type="text" id="closeDelay" placeholder="Milliseconds" [(ngModel)]="notification.closeDelay" class="validate" />
-              <label class="active" for="closeDelay">Close Delay</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s12">
-              <button type="submit" class="btn red darken-2 waves-effect waves-light">Show Notification</button>
-            </div>
-          </div>
-        </form>
-      </article>
-
-    </main>
- -->
-
 <md-toolbar color="primary">
     HAT MPGs
-  <span *ngIf="gameStarted">
+    <span *ngIf="gameStarted">
 <span *ngIf="!myTurn">     ( Not Your Turn )</span>
-  <span *ngIf="myTurn">     ( Your Turn )</span>
-  </span>
+    <span *ngIf="myTurn">     ( Your Turn )</span>
+    </span>
     <button md-fab style="float: right;background:#C8D0BC" (click)="resetGame()">
         <md-icon>refresh</md-icon>
     </button>
@@ -63,6 +12,84 @@
 
 
 <md-tab-group class="demo-tab-group">
+    <md-tab>
+        <template md-tab-label>SPS</template>
+        <template md-tab-content>
+
+            <md-card style="height: 33px;width: 100px;background: aliceblue;">
+                <md-card-subtitle style="font-weight: 600;align-items: center;">Scoreboard</md-card-subtitle>
+                <md-card-title>T: {{ localCopy.sps.ts }}, H: {{ localCopy.sps.hs }}</md-card-title>
+            </md-card>
+
+            <md-card *ngIf="!spsPlayerName">
+                <md-card-content>
+                    <!--  <div style="margin: 10px;margin-left:15px"> -->
+                    Select Player:
+                    <md-radio-group>
+                        <md-radio-button (click)="spsPlayerName = 't';spsPlayerInRoom('t')" value="p1">T
+                        </md-radio-button>
+                        <md-radio-button (click)="spsPlayerName = 'h';spsPlayerInRoom('h')" value="p2">H</md-radio-button>
+                    </md-radio-group>
+                </md-card-content>
+            </md-card>
+            <!--<div *ngIf="localCopy.sps.spsPlayersInRoom == 2">-->
+            <div *ngIf="localCopy.sps.tp && localCopy.sps.hp">
+                <md-card *ngIf="(spsPlayerName=='t'&&localCopy.sps.tc==0 ) || (spsPlayerName=='h'&&localCopy.sps.hc==0) ">
+                    <md-card-title>Make your Choice:</md-card-title>
+                    <md-card-content>
+                        <div class="card-container  wrap">
+                            <button md-raised-button style="margin: 10px;" (click)="spsPlayTurn(1)">Stone</button>
+                            <button md-raised-button style="margin: 10px;" (click)="spsPlayTurn(2)">Paper</button>
+                            <button md-raised-button style="margin: 10px;" (click)="spsPlayTurn(3)">Scissor</button>
+                        </div>
+                    </md-card-content>
+                </md-card>
+
+                <md-card>
+                    <md-card-title>Game Status:</md-card-title>
+                    <md-card-content>
+                        <div class="card-container  wrap">
+                            <md-card style="margin: 10px;" [class.spsWinner]="spsWinner == 't'">
+                                <md-card-subtitle>T's Choice</md-card-subtitle>
+                                <!--<div *ngIf="spsPlayerName=='t'&&localCopy.sps.tc == 0" style="font-weight: bold;font-size: xx-large;margin: 20px;">?</div>-->
+                                <div *ngIf="spsPlayerName=='t'&&localCopy.sps.tc == 1" style="font-weight: bold;font-size: xx-large;margin: 20px;">Stone</div>
+                                <div *ngIf="spsPlayerName=='t'&&localCopy.sps.tc == 2" style="font-weight: bold;font-size: xx-large;margin: 20px;">Paper</div>
+                                <div *ngIf="spsPlayerName=='t'&&localCopy.sps.tc == 3" style="font-weight: bold;font-size: xx-large;margin: 20px;">Scissor</div>
+                                <div *ngIf="spsPlayerName=='h'&&localCopy.sps.tc != 0" style="font-weight: bold;font-size: xx-large;margin: 20px;">Played</div>
+                            </md-card>
+
+                            <md-card style="margin: 10px;" [class.spsWinner]="spsWinner == 't'">
+                                <md-card-subtitle>H's Choice</md-card-subtitle>
+                                <!--<div *ngIf="spsPlayerName=='h'&&localCopy.sps.hc == 0" style="font-weight: bold;font-size: xx-large;margin: 20px;">?</div>-->
+                                <div *ngIf="spsPlayerName=='h'&&localCopy.sps.hc == 1" style="font-weight: bold;font-size: xx-large;margin: 20px;">Stone</div>
+                                <div *ngIf="spsPlayerName=='h'&&localCopy.sps.hc == 2" style="font-weight: bold;font-size: xx-large;margin: 20px;">Paper</div>
+                                <div *ngIf="spsPlayerName=='h'&&localCopy.sps.hc == 3" style="font-weight: bold;font-size: xx-large;margin: 20px;">Scissor</div>
+                                <div *ngIf="spsPlayerName=='t'&&localCopy.sps.hc != 0" style="font-weight: bold;font-size: xx-large;margin: 20px;">Played</div>
+                            </md-card>
+
+                        </div>
+                    </md-card-content>
+                </md-card>
+
+                <md-card *ngIf="spsWinner">
+                    <md-card-title>Game Result
+                        <md-card>
+                            <md-card-title> 
+                                <div *ngIf="spsWinner == 't'"> <b>T WINS!</b> {{spsWinnerAnnouncement}}</div>
+                                <div *ngIf="spsWinner == 'h'"> <strong>H WINS! </strong>{{spsWinnerAnnouncement}}</div>
+                                <div *ngIf="spsWinner == 'draw'">{{spsWinnerAnnouncement}}</div>
+                            </md-card-title>
+                        </md-card>
+                    </md-card-title>
+                </md-card>
+            </div>
+            <div *ngIf="!(localCopy.sps.tp && localCopy.sps.hp)">Wait for other player to enter the room</div>
+
+
+
+        </template>
+    </md-tab>
+
     <md-tab>
         <template md-tab-label>Bluff</template>
         <template md-tab-content>
@@ -77,14 +104,13 @@
                         </md-radio-button>
                         <md-radio-button (click)="playerName = 'p2'; gameStarted = false" value="p2">H</md-radio-button>
                     </md-radio-group>
-                    <button md-raised-button (click)="startGame()" color="primary" style="margin-left: 30px;"
-                            [disabled]="!localCopy.resetState">Play
+                    <button md-raised-button (click)="startGame()" color="primary" style="margin-left: 30px;" [disabled]="!localCopy.resetState">Play
                     </button>
                 </md-card-content>
-<md-card-subtitle *ngIf="gameStarted">Opponent's Cards Left: {{ localCopy[otherPlayerName].length }}</md-card-subtitle>
+                <md-card-subtitle *ngIf="gameStarted">Opponent's Cards Left: {{ localCopy[otherPlayerName].length }}</md-card-subtitle>
 
             </md-card>
- 
+
 
             <md-card *ngIf="gameStarted && localCopy.winnerName == otherPlayerName">
                 <md-card-title style="
@@ -102,8 +128,7 @@
                 </md-card-title>
                 <md-card-content>
                     <div class="card-container  wrap">
-                        <md-card #singleCard [class.selectCard]="card.selected" (click)="cardForChallengeClicked(card)"
-                                 class="flex-item" *ngFor="let card of localCopy.turnCards">
+                        <md-card #singleCard [class.selectCard]="card.selected" (click)="cardForChallengeClicked(card)" class="flex-item" *ngFor="let card of localCopy.turnCards">
                             <!--     <md-card-title *ngIF="challengeComplete"  >{{card.value}}</md-card-title> -->
                             <md-card-title>X</md-card-title>
                             <!--     <span md-line>test</span> -->
@@ -111,7 +136,7 @@
                     </div>
                 </md-card-content>
                 <md-card-actions align="start">
-          <span *ngIf="localCopy.whoPassed == ''"> 
+                    <span *ngIf="localCopy.whoPassed == ''"> 
                 <button (click)="challengeYes()" md-button color="primary">CHALLENGE</button>
          <button (click)="challengePass()" md-button color="primary">PASS</button>
                 <button (click)="challengeAddMore()" md-button color="primary">ADD MORE</button>
@@ -139,34 +164,30 @@
                 </md-card-title>
                 <md-card-content>
                     <div class="card-container  wrap">
-                    
-                        <md-card #singleCard [class.selectCard]="card.selected"
-                                 (click)="cardClicked(card)" class="flex-item"
-                                 *ngFor="let card of localCopy[playerName]">
+
+                        <md-card #singleCard [class.selectCard]="card.selected" (click)="cardClicked(card)" class="flex-item" *ngFor="let card of localCopy[playerName]">
                             <md-card-title>{{ card.value }}</md-card-title>
                             <!--     <span md-line>test</span> -->
                         </md-card>
                     </div>
 
-                
+
                 </md-card-content>
                 <md-card-actions>
-                <span *ngIf="localCopy.whoPassed != '' && myTurn">                     
+                    <span *ngIf="localCopy.whoPassed != '' && myTurn">                     
                     <button *ngIf="localCopy.whoPassed == otherPlayerName" (click)="roundComplete()" md-button
                             color="primary">COMPLETE ROUND
                     </button>
                     </span>
-         </md-card-actions>    
+                </md-card-actions>
                 <md-card-subtitle *ngIf="localCopy.cardCache">Cards in Current Round's Cache : {{ localCopy.cardCache.length }}</md-card-subtitle>
             </md-card>
 
-            <md-card style="    margin-top: 10px;"
-                     *ngIf="localCopy.turnCards.length >1 && myTurn && !challengeState">
+            <md-card style="    margin-top: 10px;" *ngIf="localCopy.turnCards.length >1 && myTurn && !challengeState">
                 <md-card-title>Play Selected As...</md-card-title>
                 <md-card-content>
                     <div class="card-container  wrap">
-                        <md-card #singleCard [class.selectCard]="card.selected" (click)="cardOptionClicked(card)"
-                                 class="flex-item" *ngFor="let card of localCopy.cardOptions">
+                        <md-card #singleCard [class.selectCard]="card.selected" (click)="cardOptionClicked(card)" class="flex-item" *ngFor="let card of localCopy.cardOptions">
                             <md-card-title>{{ card.value }}</md-card-title>
                             <!--     <span md-line>test</span> -->
                         </md-card>
@@ -195,31 +216,28 @@
                 <md-card class="hangman-item" [class.gameOverIndicator]="localCopy.hang.isMovie1GameOver">
                     <md-card-content>
                         <md-icon>movie_filter</md-icon>
-                        <md-input type="text" #playerName maxLength="30" placeholder="Enter Movie for T..."
-                                  (keyup.enter)="startHangman1(playerName.value);playerName.value = '' ">
+                        <md-input type="text" #playerName maxLength="30" placeholder="Enter Movie for T..." (keyup.enter)="startHangman1(playerName.value);playerName.value = '' ">
                             <span md-suffix>({{ playerName.characterCount }} of 30)</span>
                         </md-input>
                         <md-card *ngIf="localCopy.hang.isMovie1GameOver">
-                                <md-card-title> Answer: {{ localCopy.hang.movie1string }}</md-card-title>
-                            </md-card>
+                            <md-card-title> Answer: {{ localCopy.hang.movie1string }}</md-card-title>
+                        </md-card>
                         <md-card *ngIf="!localCopy.hang.isMovie1success && localCopy.hang.isMovie1GameOver">
-                <md-card-title style="
+                            <md-card-title style="
     color: #ff0000;
 ">YOU LOSE :(</md-card-title>
-            </md-card>
-            <md-card *ngIf="localCopy.hang.isMovie1success && localCopy.hang.isMovie1GameOver">
-                <md-card-title style="
+                        </md-card>
+                        <md-card *ngIf="localCopy.hang.isMovie1success && localCopy.hang.isMovie1GameOver">
+                            <md-card-title style="
     color: #008000;
 ">YOU WIN :)</md-card-title>
-            </md-card>
+                        </md-card>
 
                         <div *ngIf="!localCopy.hang.isMovie1GameOver">
                             <md-card *ngIf="localCopy.hang.movie1string.length >1">
                                 <div class="card-container  wrap">
-                                    <md-card #singleCard (click)="cardClicked(card)" class="flex-item"
-                                             *ngFor="let card of localCopy.hang.movie1">
-                                        <md-card-title
-                                                *ngIf="card.show && card.value != ' '">{{ card.value }}</md-card-title>
+                                    <md-card #singleCard (click)="cardClicked(card)" class="flex-item" *ngFor="let card of localCopy.hang.movie1">
+                                        <md-card-title *ngIf="card.show && card.value != ' '">{{ card.value }}</md-card-title>
                                         <md-card-title *ngIf="!card.show && card.value != ' '">_</md-card-title>
                                         <md-card-title *ngIf="card.value == ' '">*</md-card-title>
 
@@ -229,14 +247,10 @@
                             </md-card>
                             <md-card *ngIf="localCopy.hang.movie1string.length >1" style="margin-top: 10px;">
                                 <div class="card-container  wrap">
-                                    <md-card #singleCard [class.selectCard]="card.selected" (click)="cardClicked(card)"
-                                             class="hangmanOptions-item"
-                                             *ngFor="let card of localCopy.hang.movie1state; let i = index">
+                                    <md-card #singleCard [class.selectCard]="card.selected" (click)="cardClicked(card)" class="hangmanOptions-item" *ngFor="let card of localCopy.hang.movie1state; let i = index">
                                         <md-card-title>
-                                            <md-input type="text" [placeholder]="card.placeHolder"
-                                                      [(ngModel)]="localCopy.hang.movie1state[i].valueEntered"
-                                                      [disabled]="card.optionUsed"
-                                                      (keyup)="option1Clicked(card)"></md-input>
+                                            <md-input type="text" [placeholder]="card.placeHolder" [(ngModel)]="localCopy.hang.movie1state[i].valueEntered" [disabled]="card.optionUsed"
+                                                (keyup)="option1Clicked(card)"></md-input>
                                         </md-card-title>
                                         <!--     <span md-line>test</span> -->
                                     </md-card>
@@ -245,16 +259,14 @@
 
                             <md-card *ngIf="localCopy.hang.movie1string.length >1" style="margin-top: 10px;width: 300px">
                                 <div class="card-container  wrap">
-                                    <md-card #singleCard [class.selectCard]="!card.clickable" (click)="alphabet1Clicked(card)"
-                                             class="alphabetOptions-item"
-                                             *ngFor="let card of alphabet1">
+                                    <md-card #singleCard [class.selectCard]="!card.clickable" (click)="alphabet1Clicked(card)" class="alphabetOptions-item" *ngFor="let card of alphabet1">
                                         <md-card-title>
                                             {{card.value}}
                                         </md-card-title>
                                         <!--     <span md-line>test</span> -->
                                     </md-card>
                                 </div>
-                            </md-card>                           
+                            </md-card>
                         </div>
 
                     </md-card-content>
@@ -265,31 +277,27 @@
                 <md-card class="hangman-item" [class.gameOverIndicator]="localCopy.hang.isMovie2GameOver">
                     <md-card-content>
                         <md-icon>movie_filter</md-icon>
-                        <md-input type="text" #playerName1 maxLength="30" placeholder="Enter Movie for H..."
-                                  (keyup.enter)="startHangman2(playerName1.value);playerName1.value = '' ">
+                        <md-input type="text" #playerName1 maxLength="30" placeholder="Enter Movie for H..." (keyup.enter)="startHangman2(playerName1.value);playerName1.value = '' ">
                             <span md-suffix>({{ playerName1.characterCount }} of 30)</span>
                         </md-input>
-<md-card *ngIf="localCopy.hang.isMovie2GameOver">
-                                <md-card-title> Answer: {{ localCopy.hang.movie2string }}</md-card-title>
-                            </md-card>
-                            <md-card *ngIf="!localCopy.hang.isMovie2success && localCopy.hang.isMovie2GameOver">
-                <md-card-title style="
+                        <md-card *ngIf="localCopy.hang.isMovie2GameOver">
+                            <md-card-title> Answer: {{ localCopy.hang.movie2string }}</md-card-title>
+                        </md-card>
+                        <md-card *ngIf="!localCopy.hang.isMovie2success && localCopy.hang.isMovie2GameOver">
+                            <md-card-title style="
     color: #ff0000;
 ">YOU LOSE :(</md-card-title>
-            </md-card>
-            <md-card *ngIf="localCopy.hang.isMovie2success && localCopy.hang.isMovie2GameOver">
-                <md-card-title style="
+                        </md-card>
+                        <md-card *ngIf="localCopy.hang.isMovie2success && localCopy.hang.isMovie2GameOver">
+                            <md-card-title style="
     color: #008000;
 ">YOU WIN :)</md-card-title>
-            </md-card>
+                        </md-card>
                         <div *ngIf="!localCopy.hang.isMovie2GameOver">
                             <md-card *ngIf="localCopy.hang.movie2string.length >1">
                                 <div class="card-container  wrap">
-                                    <md-card #singleCard [class.selectCard]="card.selected" (click)="cardClicked(card)"
-                                             class="flex-item"
-                                             *ngFor="let card of localCopy.hang.movie2">
-                                        <md-card-title
-                                                *ngIf="card.show && card.value != ' '">{{ card.value }}</md-card-title>
+                                    <md-card #singleCard [class.selectCard]="card.selected" (click)="cardClicked(card)" class="flex-item" *ngFor="let card of localCopy.hang.movie2">
+                                        <md-card-title *ngIf="card.show && card.value != ' '">{{ card.value }}</md-card-title>
                                         <md-card-title *ngIf="!card.show && card.value != ' '">_</md-card-title>
                                         <md-card-title *ngIf="card.value == ' '">*</md-card-title>
 
@@ -299,14 +307,10 @@
                             </md-card>
                             <md-card *ngIf="localCopy.hang.movie2string.length >1" style="margin-top: 10px;">
                                 <div class="card-container  wrap">
-                                    <md-card #singleCard [class.selectCard]="card.selected" (click)="cardClicked(card)"
-                                             class="hangmanOptions-item"
-                                             *ngFor="let card of localCopy.hang.movie2state; let i = index">
+                                    <md-card #singleCard [class.selectCard]="card.selected" (click)="cardClicked(card)" class="hangmanOptions-item" *ngFor="let card of localCopy.hang.movie2state; let i = index">
                                         <md-card-title>
-                                            <md-input type="text" [placeholder]="card.placeHolder"
-                                                      [(ngModel)]="localCopy.hang.movie2state[i].valueEntered"
-                                                      [disabled]="card.optionUsed"
-                                                      (keyup)="option2Clicked(card)"></md-input>
+                                            <md-input type="text" [placeholder]="card.placeHolder" [(ngModel)]="localCopy.hang.movie2state[i].valueEntered" [disabled]="card.optionUsed"
+                                                (keyup)="option2Clicked(card)"></md-input>
                                         </md-card-title>
                                         <!--     <span md-line>test</span> -->
                                     </md-card>
@@ -315,16 +319,14 @@
 
                             <md-card *ngIf="localCopy.hang.movie2string.length >1" style="margin-top: 10px;width: 300px">
                                 <div class="card-container  wrap">
-                                    <md-card #singleCard [class.selectCard]="!card.clickable" (click)="alphabet2Clicked(card)"
-                                             class="alphabetOptions-item"
-                                             *ngFor="let card of alphabet2">
+                                    <md-card #singleCard [class.selectCard]="!card.clickable" (click)="alphabet2Clicked(card)" class="alphabetOptions-item" *ngFor="let card of alphabet2">
                                         <md-card-title>
                                             {{card.value}}
                                         </md-card-title>
                                         <!--     <span md-line>test</span> -->
                                     </md-card>
                                 </div>
-                            </md-card>                            
+                            </md-card>
                         </div>
 
                     </md-card-content>
@@ -338,18 +340,18 @@
 
 
 <style>
-       .flex-container {
+    .flex-container {
         padding: 10px;
         margin: 10px;
         list-style: none;
         -ms-box-orient: horizontal;
         display: flex;
     }
-
+    
     .wrap {
         flex-wrap: wrap;
     }
-
+    
     .flex-item {
         background: #F9F4F3;
         padding: 5px;
@@ -368,7 +370,7 @@
           font-size: 2em;
           text-align: center; */
     }
-
+    
     .hangmanOptions-item {
         background: #F9F4F3;
         padding: 5px;
@@ -387,8 +389,8 @@
           font-size: 2em;
           text-align: center; */
     }
-
-        .alphabetOptions-item {
+    
+    .alphabetOptions-item {
         background: #F9F4F3;
         padding: 5px;
         margin: 5px;
@@ -406,7 +408,7 @@
           font-size: 2em;
           text-align: center; */
     }
-
+    
     .hangman-item {
         padding: 15px;
         margin: 15px;
@@ -425,11 +427,11 @@
           font-size: 2em;
           text-align: center; */
     }
-
+    
     .selectCard {
         background: #C8D0BC;
     }
-
+    
     [md-fab] {
         position: absolute;
         right: 3%;
@@ -437,7 +439,7 @@
         z-index: 1;
         margin-top: 10px
     }
-
+    
     .opponentStatus {
         color: white;
         position: absolute;
@@ -446,47 +448,44 @@
         z-index: 1;
         margin-top: 10px
     }
-
+    
     md-radio-button,
     md-checkbox {
         margin: 16px 8px;
     }
-
+    
     .form {
         display: flex;
     }
-
+    
     .form md-card {
         flex-grow: 1;
     }
-
+    
     .card-container {
         display: flex;
         flex-flow: row wrap;
     }
-
+    
     * {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
-
+    
     .secondary {
         color: rgba(0, 0, 0, 0.54);
     }
-
+    
     .demo-tab-group {
         border: 1px solid #e0e0e0;
-
-    .md-tab-header {
-        background: #f9f9f9;
+        .md-tab-header {
+            background: #f9f9f9;
+        }
+        .md-tab-body {
+            padding: 12px;
+        }
     }
-
-    .md-tab-body {
-        padding: 12px;
-    }
-
-    }
-
+    
     [hang-fab] {
         position: absolute;
         right: 3%;
@@ -494,11 +493,15 @@
         z-index: 1;
         margin-top: 10px
     }
-
+    
     .disableInput {
         user-select: none;
     }
+    
     .gameOverIndicator {
-        background: rgba(128, 128, 128, 0.25); 
+        background: rgba(128, 128, 128, 0.25);
     }
+    /*.spsWinner {
+        background: rgba(78, 128, 0, 0.45);
+    }*/
 </style>
