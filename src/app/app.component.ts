@@ -667,7 +667,7 @@ this.localCopy.sps.hp = true;
             this.localCopy.hang.isMovie1success = true;
             this.localCopy.hang.score1 += 1
             this.localCopy.hang.isMovie1GameOver = true;
-
+this.resetKeyboard();
             var optionsUsedC = 0;
             var that = this;
             this.localCopy.hang.movie1state.forEach(function (n: any) {
@@ -703,6 +703,7 @@ this.localCopy.sps.hp = true;
             //check game over
             if (optionsUsedCount == 7) {
                 this.localCopy.hang.isMovie1GameOver = true;
+                this.resetKeyboard();
                 //this.localCopy.hang.score1 -= 1
             }
         }
@@ -781,7 +782,10 @@ this.localCopy.sps.hp = true;
     startHangman1(value) {
         this.localCopy.hang.isMovie1success = false;
         this.localCopy.hang.isMovie1GameOver = false;
+<<<<<<< HEAD
         this.resetKeyboard();
+=======
+>>>>>>> 1f71e5ae4e4a8fb1aca2bb8c33c98694f21bfce0
         this.localCopy.hang.movie1string = value.toUpperCase();
         var movie1 = [];
         //var that = this;
@@ -825,7 +829,7 @@ this.localCopy.sps.hp = true;
             this.localCopy.hang.isMovie2success = true;
             this.localCopy.hang.score2 += 1
             this.localCopy.hang.isMovie2GameOver = true;
-
+this.resetKeyboard2();
             var optionsUsedC = 0;
             var that = this;
             this.localCopy.hang.movie2state.forEach(function (n: any) {
@@ -860,6 +864,7 @@ this.localCopy.sps.hp = true;
             //check game over
             if (optionsUsedCount == 7) {
                 this.localCopy.hang.isMovie2GameOver = true;
+                this.resetKeyboard2();
                 //this.localCopy.hang.score2 -= 1
             }
         }
@@ -937,7 +942,10 @@ this.localCopy.sps.hp = true;
     startHangman2(value) {
         this.localCopy.hang.isMovie2success = false;
         this.localCopy.hang.isMovie2GameOver = false;
+<<<<<<< HEAD
         this.resetKeyboard2();
+=======
+>>>>>>> 1f71e5ae4e4a8fb1aca2bb8c33c98694f21bfce0
         this.localCopy.hang.movie2string = value.toUpperCase();
         var movie2 = [];
         //var that = this;

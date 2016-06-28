@@ -31,6 +31,9 @@ HOSTING
 --- 
 
 UPCOMING GLOBAL FEATURES
+- [ ] Rename the repo and site to something gamey
+- [ ] Create alias for the site using some free alias svc
+- [ ] Service Workers (courtesy of ng cli) for offline support 
 - [ ] CHROME/ANDROID NOTIFICATIONS WHEN ACTIONS ARE REQUIRED FROM PLAYER
 - [ ] start game only when both player are in the session
 - [x] deploy to gh pages
@@ -41,7 +44,8 @@ UPCOMING GLOBAL FEATURES
 - [x] Cloud deploy on Firebase
 - [ ] Encryption
 - [ ] offline template compiler for faster initial load
-
+- [ ] Add option to use bluetooth in offline scenarios
+- [ ] Allow single player offline/online play using presaved movies for hangman and randomizer for play against computer in SPS and rummy 
 --- 
 
 UPCOMING HANGMAN FEATURES
@@ -61,7 +65,8 @@ UPCOMING HANGMAN FEATURES
 
 UPCOMING BLUFF FEATURES
 - [ ] game should persist across mobile and desktop...
-
+- [ ] Instant rewards are fun, so give points for each successful catch and/or bluff
+- [ ] Allow for smaller games with a subset of the deck like say8 cards each ie 16 total cards comprising of just 1 to 4 of the deck or even random 16 cards from the deck...let the user decide
 --- 
 
 ISSUES
