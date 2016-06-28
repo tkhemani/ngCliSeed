@@ -782,10 +782,7 @@ this.resetKeyboard();
     startHangman1(value) {
         this.localCopy.hang.isMovie1success = false;
         this.localCopy.hang.isMovie1GameOver = false;
-<<<<<<< HEAD
         this.resetKeyboard();
-=======
->>>>>>> 1f71e5ae4e4a8fb1aca2bb8c33c98694f21bfce0
         this.localCopy.hang.movie1string = value.toUpperCase();
         var movie1 = [];
         //var that = this;
@@ -942,10 +939,7 @@ this.resetKeyboard2();
     startHangman2(value) {
         this.localCopy.hang.isMovie2success = false;
         this.localCopy.hang.isMovie2GameOver = false;
-<<<<<<< HEAD
         this.resetKeyboard2();
-=======
->>>>>>> 1f71e5ae4e4a8fb1aca2bb8c33c98694f21bfce0
         this.localCopy.hang.movie2string = value.toUpperCase();
         var movie2 = [];
         //var that = this;
