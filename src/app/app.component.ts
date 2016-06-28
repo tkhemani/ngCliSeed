@@ -100,7 +100,7 @@ export class AppComponent {
         }
     };
 
-    challengeAddMoreState = false;    
+    challengeAddMoreState = false;
     otherPlayerName = null;
     gameStarted = false;
     e1 = null;
@@ -127,7 +127,19 @@ export class AppComponent {
     playerName = "";
     // player = null;
     //localCopy = {}
+    spsPlayerName = null;
+    spsWinner = null;
+    spsWinnerAnnouncement = null;
+    spsPlayersInRoom=0;
     localCopy = {
+        "sps": {
+            "tc": 0,
+            "hc": 0,
+            "ts": 0,
+            "hs": 0,
+            "tp": false,
+            "hp": false       
+        },
         "hang": {
             "movie1string": "X",
             "isMovie1success": false,
@@ -164,6 +176,98 @@ export class AppComponent {
     //   ngDoCheck() {
     // this.changeDetected = true;
     //   }
+
+    spsPlayTurn(selection) {
+        this.spsWinner = null;
+        this.spsWinnerAnnouncement = null;
+
+        if (this.spsPlayerName == "t") {
+            this.localCopy.sps.tc = selection;
+        } else {
+            this.localCopy.sps.hc = selection;
+        }
+        this.syncDB();
+    }
+
+    spsResetGame() {
+        this.localCopy.sps.tc = 0;
+        this.localCopy.sps.hc = 0;        
+        this.syncDB();
+    }
+    spsPlayerInRoom(n){
+        if(n == 't'){
+this.localCopy.sps.tp = true;
+        } else{
+this.localCopy.sps.hp = true;            
+        }
+        this.syncDB();
+    }
+
+    SPSLogic() {
+
+        //update players in room
+
+        // if(this.localCopy.sps.tp){
+        //     this.spsPlayersInRoom +=1;
+        // }
+        // if(this.localCopy.sps.hp){
+        //     this.spsPlayersInRoom +=1;
+        // }
+        //SPS Logic Start
+        let HChoice = this.localCopy.sps["hc"];
+        let TChoice = this.localCopy.sps["tc"];
+        if (HChoice != 0 && TChoice != 0) {//Game has ended
+            if (HChoice == 1) { //H has STONE
+                if (TChoice == 1) {        // T has stone
+                    this.spsWinner = "draw"
+                    this.spsWinnerAnnouncement = "DRAW";                    
+                } else if (TChoice == 2) { // T has paper
+                    this.spsWinner = "t"
+                    this.spsWinnerAnnouncement = "Paper Beats Stone";
+                } else if (TChoice == 3) { // T has scissor
+                    this.spsWinner = "h"
+                    this.spsWinnerAnnouncement = "Stone Beats Scissor";
+                }
+            } else if (HChoice == 2) { //H has PAPER
+                if (TChoice == 1) {        // T has stone
+                    this.spsWinner = "h"
+                    this.spsWinnerAnnouncement = "Paper Beats Stone";                                                            
+                } else if (TChoice == 2) { // T has paper
+                    this.spsWinner = "draw"
+                    this.spsWinnerAnnouncement = "DRAW";                                        
+                } else if (TChoice == 3) { // T has scissor
+                    this.spsWinner = "t"
+                    this.spsWinnerAnnouncement = "Scissor Beats Paper";                                        
+                }
+            } else if (HChoice == 1) { //H has SCISSOR
+                if (TChoice == 1) {        // T has stone
+                    this.spsWinner = "t"
+                } else if (TChoice == 2) { // T has paper
+                    this.spsWinner = "h"
+                } else if (TChoice == 3) { // T has scissor
+                    this.spsWinner = "draw"
+                }
+            }
+
+            //give points
+            if (this.spsWinner == 't') {
+                this.localCopy.sps["ts"] += 1;
+            } else if (this.spsWinner == 'h') {
+                this.localCopy.sps["hs"] += 1;
+            }
+
+            //reset game
+            this.spsResetGame();
+        }
+
+        if (this.spsPlayerName == "t") {
+            //if (data.sps.HChoice != 0) //H has played
+        }
+
+
+        // SPS Logic End
+    }
+
     constructor(af: AngularFire, public ar: ApplicationRef) {
 
         //console.clear();
@@ -171,16 +275,20 @@ export class AppComponent {
 
         //this.element.nativeElement // <- your direct element reference 
 
-        //this.root = af.database.object('/root');
-        this.root = af.database.object('/root/dev'); // for local development and testing
+        this.root = af.database.object('/root');
+        //this.root = af.database.object('/root/dev'); // for local development and testing
 
         var that = this;
         this.root.subscribe(function (data) {
+
+
+
             if (data.p1 && data.p1.length > 1) data.p1 = data.p1.map(n => n.value).sort().map(function (n) { return { value: n, selected: false } });
             if (data.p2 && data.p2.length > 1) data.p2 = data.p2.map(n => n.value).sort().map(function (n) { return { value: n, selected: false } });
 
             that.localCopy = data;
             that.processHangmanData();
+            that.SPSLogic();
             if (!that.localCopy.p1) {
                 that.localCopy.p1 = []
             }
@@ -308,6 +416,14 @@ export class AppComponent {
 
     resetGame() {
         this.localCopy = {
+            "sps": {
+                "tc": 0,
+                "hc": 0,
+                "ts": 0,
+                "hs": 0,
+                "tp":false,
+                "hp": false
+            },
             "hang": {
                 "isMovie1GameOver": false,
                 "isMovie2GameOver": false,
