@@ -44,7 +44,8 @@ UPCOMING GLOBAL FEATURES
 - [x] Cloud deploy on Firebase
 - [ ] Encryption
 - [ ] offline template compiler for faster initial load
-
+- [ ] Add option to use bluetooth in offline scenarios
+- [ ] Allow single player offline/online play using presaved movies for hangman and randomizer for play against computer in SPS and rummy 
 --- 
 
 UPCOMING HANGMAN FEATURES
