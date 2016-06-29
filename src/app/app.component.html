@@ -33,7 +33,8 @@
                 </md-card-content>
             </md-card>
             <!--<div *ngIf="localCopy.sps.spsPlayersInRoom == 2">-->
-            <div *ngIf="localCopy.sps.tp && localCopy.sps.hp">
+            <!--<div *ngIf="localCopy.sps.tp && localCopy.sps.hp">-->
+            <div>
                 <md-card *ngIf="(spsPlayerName=='t'&&localCopy.sps.tc==0 ) || (spsPlayerName=='h'&&localCopy.sps.hc==0) ">
                     <md-card-title>Make your Choice:</md-card-title>
                     <md-card-content>
@@ -83,124 +84,14 @@
                     </md-card-title>
                 </md-card>
             </div>
-            <div *ngIf="!(localCopy.sps.tp && localCopy.sps.hp)">Wait for other player to enter the room</div>
+            <!--<div *ngIf="!(localCopy.sps.tp && localCopy.sps.hp)">Wait for other player to enter the room</div>-->
 
 
 
         </template>
     </md-tab>
 
-    <md-tab>
-        <template md-tab-label>Bluff</template>
-        <template md-tab-content>
 
-
-            <md-card style="    margin-top: 10px;">
-                <md-card-content>
-                    <!--  <div style="margin: 10px;margin-left:15px"> -->
-                    Select Player:
-                    <md-radio-group>
-                        <md-radio-button (click)="playerName = 'p1'; gameStarted = false" value="p1" checked="true">T
-                        </md-radio-button>
-                        <md-radio-button (click)="playerName = 'p2'; gameStarted = false" value="p2">H</md-radio-button>
-                    </md-radio-group>
-                    <button md-raised-button (click)="startGame()" color="primary" style="margin-left: 30px;" [disabled]="!localCopy.resetState">Play
-                    </button>
-                </md-card-content>
-                <md-card-subtitle *ngIf="gameStarted">Opponent's Cards Left: {{ localCopy[otherPlayerName].length }}</md-card-subtitle>
-
-            </md-card>
-
-
-            <md-card *ngIf="gameStarted && localCopy.winnerName == otherPlayerName">
-                <md-card-title style="
-    color: #ff0000;
-">YOU LOSE :(</md-card-title>
-            </md-card>
-            <md-card *ngIf="gameStarted && localCopy.winnerName == playerName">
-                <md-card-title style="
-    color: #008000;
-">YOU WIN :)</md-card-title>
-            </md-card>
-
-            <md-card style="    margin-top: 10px;" *ngIf="challengeState && myTurn && gameStarted">
-                <md-card-title>Following cards are played as {{localCopy.playAs}}:
-                </md-card-title>
-                <md-card-content>
-                    <div class="card-container  wrap">
-                        <md-card #singleCard [class.selectCard]="card.selected" (click)="cardForChallengeClicked(card)" class="flex-item" *ngFor="let card of localCopy.turnCards">
-                            <!--     <md-card-title *ngIF="challengeComplete"  >{{card.value}}</md-card-title> -->
-                            <md-card-title>X</md-card-title>
-                            <!--     <span md-line>test</span> -->
-                        </md-card>
-                    </div>
-                </md-card-content>
-                <md-card-actions align="start">
-                    <span *ngIf="localCopy.whoPassed == ''"> 
-                <button (click)="challengeYes()" md-button color="primary">CHALLENGE</button>
-         <button (click)="challengePass()" md-button color="primary">PASS</button>
-                <button (click)="challengeAddMore()" md-button color="primary">ADD MORE</button>
-                </span>
-                    <span *ngIf="localCopy.whoPassed != ''"> 
-                    <button *ngIf="localCopy.whoPassed == playerName" (click)="challengeYes()" md-button
-                            color="primary">CHALLENGE
-                    </button>
-                    <button *ngIf="localCopy.whoPassed == playerName" (click)="challengePass()" md-button
-                            color="primary">PASS
-                    </button>
-                    <button *ngIf="localCopy.whoPassed == otherPlayerName" (click)="challengeAddMore()" md-button
-                            color="primary">ADD MORE
-                    </button>
-                    <button *ngIf="localCopy.whoPassed == otherPlayerName" (click)="roundComplete()" md-button
-                            color="primary">COMPLETE ROUND
-                    </button>
-                    </span>
-                </md-card-actions>
-            </md-card>
-
-
-            <md-card style="    margin-top: 10px;" *ngIf="gameStarted">
-                <md-card-title>Your Cards...
-                </md-card-title>
-                <md-card-content>
-                    <div class="card-container  wrap">
-
-                        <md-card #singleCard [class.selectCard]="card.selected" (click)="cardClicked(card)" class="flex-item" *ngFor="let card of localCopy[playerName]">
-                            <md-card-title>{{ card.value }}</md-card-title>
-                            <!--     <span md-line>test</span> -->
-                        </md-card>
-                    </div>
-
-
-                </md-card-content>
-                <md-card-actions>
-                    <span *ngIf="localCopy.whoPassed != '' && myTurn">                     
-                    <button *ngIf="localCopy.whoPassed == otherPlayerName" (click)="roundComplete()" md-button
-                            color="primary">COMPLETE ROUND
-                    </button>
-                    </span>
-                </md-card-actions>
-                <md-card-subtitle *ngIf="localCopy.cardCache">Cards in Current Round's Cache : {{ localCopy.cardCache.length }}</md-card-subtitle>
-            </md-card>
-
-            <md-card style="    margin-top: 10px;" *ngIf="localCopy.turnCards.length >1 && myTurn && !challengeState">
-                <md-card-title>Play Selected As...</md-card-title>
-                <md-card-content>
-                    <div class="card-container  wrap">
-                        <md-card #singleCard [class.selectCard]="card.selected" (click)="cardOptionClicked(card)" class="flex-item" *ngFor="let card of localCopy.cardOptions">
-                            <md-card-title>{{ card.value }}</md-card-title>
-                            <!--     <span md-line>test</span> -->
-                        </md-card>
-                    </div>
-                </md-card-content>
-                <md-card-actions align="start">
-                    <button (click)="executeChance()" md-button color="primary">DONE</button>
-                </md-card-actions>
-            </md-card>
-
-
-        </template>
-    </md-tab>
     <md-tab>
         <template md-tab-label>
             <span>Hangman</span></template>
@@ -336,6 +227,118 @@
             </div>
         </template>
     </md-tab>
+
+  <md-tab>
+    <template md-tab-label>Bluff</template>
+    <template md-tab-content>
+
+
+      <md-card style="    margin-top: 10px;">
+        <md-card-content>
+          <!--  <div style="margin: 10px;margin-left:15px"> -->
+          Select Player:
+          <md-radio-group>
+            <md-radio-button (click)="playerName = 'p1'; gameStarted = false" value="p1" checked="true">T
+            </md-radio-button>
+            <md-radio-button (click)="playerName = 'p2'; gameStarted = false" value="p2">H</md-radio-button>
+          </md-radio-group>
+          <button md-raised-button (click)="startGame()" color="primary" style="margin-left: 30px;" [disabled]="!localCopy.resetState">Play
+          </button>
+        </md-card-content>
+        <md-card-subtitle *ngIf="gameStarted">Opponent's Cards Left: {{ localCopy[otherPlayerName].length }}</md-card-subtitle>
+
+      </md-card>
+
+
+      <md-card *ngIf="gameStarted && localCopy.winnerName == otherPlayerName">
+        <md-card-title style="
+    color: #ff0000;
+">YOU LOSE :(</md-card-title>
+      </md-card>
+      <md-card *ngIf="gameStarted && localCopy.winnerName == playerName">
+        <md-card-title style="
+    color: #008000;
+">YOU WIN :)</md-card-title>
+      </md-card>
+
+      <md-card style="    margin-top: 10px;" *ngIf="challengeState && myTurn && gameStarted">
+        <md-card-title>Following cards are played as {{localCopy.playAs}}:
+        </md-card-title>
+        <md-card-content>
+          <div class="card-container  wrap">
+            <md-card #singleCard [class.selectCard]="card.selected" (click)="cardForChallengeClicked(card)" class="flex-item" *ngFor="let card of localCopy.turnCards">
+              <!--     <md-card-title *ngIF="challengeComplete"  >{{card.value}}</md-card-title> -->
+              <md-card-title>X</md-card-title>
+              <!--     <span md-line>test</span> -->
+            </md-card>
+          </div>
+        </md-card-content>
+        <md-card-actions align="start">
+                    <span *ngIf="localCopy.whoPassed == ''">
+                <button (click)="challengeYes()" md-button color="primary">CHALLENGE</button>
+         <button (click)="challengePass()" md-button color="primary">PASS</button>
+                <button (click)="challengeAddMore()" md-button color="primary">ADD MORE</button>
+                </span>
+                    <span *ngIf="localCopy.whoPassed != ''">
+                    <button *ngIf="localCopy.whoPassed == playerName" (click)="challengeYes()" md-button
+                            color="primary">CHALLENGE
+                    </button>
+                    <button *ngIf="localCopy.whoPassed == playerName" (click)="challengePass()" md-button
+                            color="primary">PASS
+                    </button>
+                    <button *ngIf="localCopy.whoPassed == otherPlayerName" (click)="challengeAddMore()" md-button
+                            color="primary">ADD MORE
+                    </button>
+                    <button *ngIf="localCopy.whoPassed == otherPlayerName" (click)="roundComplete()" md-button
+                            color="primary">COMPLETE ROUND
+                    </button>
+                    </span>
+        </md-card-actions>
+      </md-card>
+
+
+      <md-card style="    margin-top: 10px;" *ngIf="gameStarted">
+        <md-card-title>Your Cards...
+        </md-card-title>
+        <md-card-content>
+          <div class="card-container  wrap">
+
+            <md-card #singleCard [class.selectCard]="card.selected" (click)="cardClicked(card)" class="flex-item" *ngFor="let card of localCopy[playerName]">
+              <md-card-title>{{ card.value }}</md-card-title>
+              <!--     <span md-line>test</span> -->
+            </md-card>
+          </div>
+
+
+        </md-card-content>
+        <md-card-actions>
+                    <span *ngIf="localCopy.whoPassed != '' && myTurn">
+                    <button *ngIf="localCopy.whoPassed == otherPlayerName" (click)="roundComplete()" md-button
+                            color="primary">COMPLETE ROUND
+                    </button>
+                    </span>
+        </md-card-actions>
+        <md-card-subtitle *ngIf="localCopy.cardCache">Cards in Current Round's Cache : {{ localCopy.cardCache.length }}</md-card-subtitle>
+      </md-card>
+
+      <md-card style="    margin-top: 10px;" *ngIf="localCopy.turnCards.length >1 && myTurn && !challengeState">
+        <md-card-title>Play Selected As...</md-card-title>
+        <md-card-content>
+          <div class="card-container  wrap">
+            <md-card #singleCard [class.selectCard]="card.selected" (click)="cardOptionClicked(card)" class="flex-item" *ngFor="let card of localCopy.cardOptions">
+              <md-card-title>{{ card.value }}</md-card-title>
+              <!--     <span md-line>test</span> -->
+            </md-card>
+          </div>
+        </md-card-content>
+        <md-card-actions align="start">
+          <button (click)="executeChance()" md-button color="primary">DONE</button>
+        </md-card-actions>
+      </md-card>
+
+
+    </template>
+  </md-tab>
 </md-tab-group>
 
 

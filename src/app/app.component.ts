@@ -220,7 +220,7 @@ this.localCopy.sps.hp = true;
             if (HChoice == 1) { //H has STONE
                 if (TChoice == 1) {        // T has stone
                     this.spsWinner = "draw"
-                    this.spsWinnerAnnouncement = "DRAW";                    
+                    this.spsWinnerAnnouncement = "DRAW. Both played Stone";
                 } else if (TChoice == 2) { // T has paper
                     this.spsWinner = "t"
                     this.spsWinnerAnnouncement = "Paper Beats Stone";
@@ -234,18 +234,21 @@ this.localCopy.sps.hp = true;
                     this.spsWinnerAnnouncement = "Paper Beats Stone";                                                            
                 } else if (TChoice == 2) { // T has paper
                     this.spsWinner = "draw"
-                    this.spsWinnerAnnouncement = "DRAW";                                        
+                    this.spsWinnerAnnouncement = "DRAW. Both played Paper";
                 } else if (TChoice == 3) { // T has scissor
                     this.spsWinner = "t"
                     this.spsWinnerAnnouncement = "Scissor Beats Paper";                                        
                 }
-            } else if (HChoice == 1) { //H has SCISSOR
+            } else if (HChoice == 3) { //H has SCISSOR
                 if (TChoice == 1) {        // T has stone
                     this.spsWinner = "t"
+                    this.spsWinnerAnnouncement = "Stone Beats Scissor";
                 } else if (TChoice == 2) { // T has paper
                     this.spsWinner = "h"
+                    this.spsWinnerAnnouncement = "Scissor Beats Paper";
                 } else if (TChoice == 3) { // T has scissor
                     this.spsWinner = "draw"
+                    this.spsWinnerAnnouncement = "DRAW. Both played Scissor";
                 }
             }
 
