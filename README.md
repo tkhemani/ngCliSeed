@@ -80,6 +80,8 @@ UPCOMING SPS FEATURES
 MORE GAME IDEAS
 
 - POKER
+- Indian Poker (Teen Patti)
+- Karran
 - Yahtzee: http://boardgamegeek.com/boardgame/2243/yahtzee
 - Bridge
 - Blackjack
