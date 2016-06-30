@@ -31,6 +31,7 @@ HOSTING
 --- 
 
 UPCOMING GLOBAL FEATURES
+- [ ] Change tabs to sidebar for better mobile UX (currently mobile landscape mode shows max 2 tabs)
 - [ ] Rename the repo and site to something gamey
 - [ ] Create alias for the site using some free alias svc
 - [ ] Service Workers (courtesy of ng cli) for offline support 
@@ -76,6 +77,15 @@ UPCOMING SPS FEATURES
 
 --- 
 
+MORE GAME IDEAS
+
+- POKER
+- Yahtzee: http://boardgamegeek.com/boardgame/2243/yahtzee
+- Bridge
+- Blackjack
+- UNO
+- Go Fish
+- Spades/Bridge (decide how many hands you can win and then color and then win 'em. High card in each round wins. Color trumps all)
 
 
 ISSUES
