@@ -73,7 +73,7 @@ UPCOMING BLUFF FEATURES
 UPCOMING SPS FEATURES
 - [ ] hand icons instead of text
 - [ ] when someone wins show inline instead of text below
-
+- [ ] Allow players to configure a games of stay 5, so after someone gets 5, record it in scoreboard (So after 1st win, set T: 0/5, H: 0/3 to T: 1/0, H: 0/0 ) and reset score to 0 and show banner that T won this game. 
 
 --- 
 
