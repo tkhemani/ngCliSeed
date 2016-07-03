@@ -88,6 +88,7 @@ MORE GAME IDEAS
 - UNO
 - Go Fish
 - Spades/Bridge (decide how many hands you can win and then color and then win 'em. High card in each round wins. Color trumps all)
-
+- some puzzle game with players challenging each other or pull Qs from open source rest endpoint and play in real time with with first to answer as winner
+- googlefeud etc. game try to embed
 
 ISSUES
