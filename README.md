@@ -31,6 +31,7 @@ HOSTING
 --- 
 
 UPCOMING GLOBAL FEATURES
+- [ ] Change tabs to sidebar for better mobile UX (currently mobile landscape mode shows max 2 tabs)
 - [ ] Rename the repo and site to something gamey
 - [ ] Create alias for the site using some free alias svc
 - [ ] Service Workers (courtesy of ng cli) for offline support 
@@ -68,5 +69,26 @@ UPCOMING BLUFF FEATURES
 - [ ] Instant rewards are fun, so give points for each successful catch and/or bluff
 - [ ] Allow for smaller games with a subset of the deck like say8 cards each ie 16 total cards comprising of just 1 to 4 of the deck or even random 16 cards from the deck...let the user decide
 --- 
+
+UPCOMING SPS FEATURES
+- [ ] hand icons instead of text
+- [ ] when someone wins show inline instead of text below
+- [ ] Allow players to configure a games of stay 5, so after someone gets 5, record it in scoreboard (So after 1st win, set T: 0/5, H: 0/3 to T: 1/0, H: 0/0 ) and reset score to 0 and show banner that T won this game. 
+
+--- 
+
+MORE GAME IDEAS
+
+- POKER
+- Indian Poker (Teen Patti)
+- Karran
+- Yahtzee: http://boardgamegeek.com/boardgame/2243/yahtzee
+- Bridge
+- Blackjack
+- UNO
+- Go Fish
+- Spades/Bridge (decide how many hands you can win and then color and then win 'em. High card in each round wins. Color trumps all)
+- some puzzle game with players challenging each other or pull Qs from open source rest endpoint and play in real time with with first to answer as winner
+- googlefeud etc. game try to embed
 
 ISSUES
