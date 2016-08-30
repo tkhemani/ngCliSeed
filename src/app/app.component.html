@@ -110,6 +110,11 @@
                         <md-input type="text" #playerName maxLength="30" placeholder="Enter Movie for T..." (keyup.enter)="startHangman1(playerName.value);playerName.value = '' ">
                             <span md-suffix>({{ playerName.characterCount }} of 30)</span>
                         </md-input>
+                        <md-radio-group>
+                        <md-radio-button (click)="spsPlayerName = 't';spsPlayerInRoom('t')" value="p1">Hindi
+                        </md-radio-button>
+                        <md-radio-button (click)="spsPlayerName = 'h';spsPlayerInRoom('h')" value="p2">English</md-radio-button>
+                    </md-radio-group>
                         <md-card *ngIf="localCopy.hang.isMovie1GameOver">
                             <md-card-title> Answer: {{ localCopy.hang.movie1string }}</md-card-title>
                         </md-card>
@@ -171,6 +176,12 @@
                         <md-input type="text" #playerName1 maxLength="30" placeholder="Enter Movie for H..." (keyup.enter)="startHangman2(playerName1.value);playerName1.value = '' ">
                             <span md-suffix>({{ playerName1.characterCount }} of 30)</span>
                         </md-input>
+                        
+                    <md-radio-group>
+                        <md-radio-button (click)="spsPlayerName = 't';spsPlayerInRoom('t')" value="p1">Hindi
+                        </md-radio-button>
+                        <md-radio-button (click)="spsPlayerName = 'h';spsPlayerInRoom('h')" value="p2">English</md-radio-button>
+                    </md-radio-group>
                         <md-card *ngIf="localCopy.hang.isMovie2GameOver">
                             <md-card-title> Answer: {{ localCopy.hang.movie2string }}</md-card-title>
                         </md-card>
