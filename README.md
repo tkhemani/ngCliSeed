@@ -30,6 +30,11 @@ HOSTING
 
 --- 
 
+DB
+* Database Dashboard: https://console.firebase.google.com/project/project-7548713803590560188/database/data 
+
+---
+
 UPCOMING GLOBAL FEATURES
 - [ ] Change tabs to sidebar for better mobile UX (currently mobile landscape mode shows max 2 tabs)
 - [ ] Rename the repo and site to something gamey

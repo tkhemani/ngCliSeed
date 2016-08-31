@@ -110,11 +110,14 @@
                         <md-input type="text" #playerName maxLength="30" placeholder="Enter Movie for T..." (keyup.enter)="startHangman1(playerName.value);playerName.value = '' ">
                             <span md-suffix>({{ playerName.characterCount }} of 30)</span>
                         </md-input>
-                        <md-radio-group>
-                        <md-radio-button (click)="spsPlayerName = 't';spsPlayerInRoom('t')" value="p1">Hindi
+                        <!--<md-input type="text" placeholder="Language..." (keyup.enter)="hang1language()">{{localCopy.hang.movie1lang}}                            
+                        </md-input>-->
+                        <!--<md-radio-group>
+                        <md-radio-button (click)="localCopy.hang.movie1lang = 'h'" value="p1" checked="localCopy.hang.movie1lang == 'h'">Hindi
                         </md-radio-button>
-                        <md-radio-button (click)="spsPlayerName = 'h';spsPlayerInRoom('h')" value="p2">English</md-radio-button>
-                    </md-radio-group>
+                        <md-radio-button (click)="localCopy.hang.movie1lang = 'e'" value="p2" checked="localCopy.hang.movie1lang == 'e'">English</md-radio-button>
+                    </md-radio-group>-->
+                    <!--<md-checkbox [checked]="localCopy.hang.movie1lang == 'h'" (click)="hang1language(0)">Bollywood</md-checkbox>-->
                         <md-card *ngIf="localCopy.hang.isMovie1GameOver">
                             <md-card-title> Answer: {{ localCopy.hang.movie1string }}</md-card-title>
                         </md-card>
@@ -177,11 +180,11 @@
                             <span md-suffix>({{ playerName1.characterCount }} of 30)</span>
                         </md-input>
                         
-                    <md-radio-group>
-                        <md-radio-button (click)="spsPlayerName = 't';spsPlayerInRoom('t')" value="p1">Hindi
+                    <!--<md-radio-group>
+                        <md-radio-button (click)="playerName.language = 'h'" value="p1">Hindi
                         </md-radio-button>
-                        <md-radio-button (click)="spsPlayerName = 'h';spsPlayerInRoom('h')" value="p2">English</md-radio-button>
-                    </md-radio-group>
+                        <md-radio-button (click)="playerName.language = 'e'" value="p2">English</md-radio-button>
+                    </md-radio-group>-->
                         <md-card *ngIf="localCopy.hang.isMovie2GameOver">
                             <md-card-title> Answer: {{ localCopy.hang.movie2string }}</md-card-title>
                         </md-card>

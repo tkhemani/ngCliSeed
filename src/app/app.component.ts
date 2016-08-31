@@ -8,6 +8,7 @@ import {MdIcon, MdIconRegistry} from '@angular2-material/icon';
 import {MdToolbar} from '@angular2-material/toolbar';
 import {MD_TABS_DIRECTIVES} from '@angular2-material/tabs/tabs';
 import {PushNotificationComponent} from './ng2-notifications';
+import {MdCheckbox} from '@angular2-material/checkbox/checkbox';
 
 //import * as _ from 'lodash';
 
@@ -18,7 +19,7 @@ declare var _: any;
     selector: 'app-root',
     templateUrl: 'app.component.html',
     styleUrls: ['app.component.css'],
-    directives: [PushNotificationComponent, MD_TABS_DIRECTIVES, MdInput, MD_BUTTON_DIRECTIVES, MD_CARD_DIRECTIVES, MdRadioGroup, MdIcon, MdToolbar,
+    directives: [PushNotificationComponent, MD_TABS_DIRECTIVES, MdInput, MD_BUTTON_DIRECTIVES, MD_CARD_DIRECTIVES, MdRadioGroup, MdIcon, MdToolbar,MdCheckbox,
         MdRadioButton],
     providers: [MdRadioDispatcher, MdIconRegistry]
 })
@@ -142,6 +143,7 @@ export class AppComponent {
         },
         "hang": {
             "movie1string": "X",
+            "movie1lang": "e",
             "isMovie1success": false,
             "isMovie2success": false,
             "isMovie1GameOver": false,
@@ -433,6 +435,7 @@ this.localCopy.sps.hp = true;
                 "isMovie1success": false,
                 "isMovie2success": false,
                 "movie1string": "X",
+                "movie1lang": "e",
                 "movie2string": "X",
                 "movie1": ["X"],
                 "score1": 0,
@@ -653,6 +656,7 @@ this.localCopy.sps.hp = true;
         this.movie1Entered = false;
         this.movie2Entered = false;
         this.localCopy.hang.movie1string = "";
+        this.localCopy.hang.movie1lang = "e";
         this.localCopy.hang.movie2string = "";
         this.resetGame();
     }
@@ -782,6 +786,19 @@ this.resetKeyboard();
             }
         })
     }
+
+    hang1language(){
+// if(val==0){
+// if(this.localCopy.hang.movie1lang == 'h') {
+//             this.localCopy.hang.movie1lang = 'e'
+//         } else {
+//             this.localCopy.hang.movie1lang = 'h'            
+//         }
+//         this.syncDB();
+//         }
+//this.syncDB();        
+    }
+
     startHangman1(value) {
         this.localCopy.hang.isMovie1success = false;
         this.localCopy.hang.isMovie1GameOver = false;
